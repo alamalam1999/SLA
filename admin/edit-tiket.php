@@ -131,8 +131,8 @@ $_SESSION['start_time'] = time();
     require_once("../phpmailer/class.smtp.php");
     
     $sendmail = new PHPMailer();
-    $sendmail->setFrom('hakkobiorichard@outlook.com','IT Helpdesk Tiket'); //email pengirim
-    $sendmail->addReplyTo('hakkobiorichard@outlook.com','Hakko Bio Richard'); //email replay
+    $sendmail->setFrom('adoladil630@gmail.com','IT Helpdesk Tiket'); //email pengirim
+    $sendmail->addReplyTo('adoladil630@gmail.com','alam'); //email replay
     $sendmail->addAddress("$email","$nama"); //email tujuan
     //$sendmail->AddBCC("$email");
     $sendmail->Subject = "Tiket IT Helpdesk $id_tiket"; //subjek email

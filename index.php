@@ -14,7 +14,7 @@
     <script src="dist/sweetalert-dev.js"></script>
     <link rel="stylesheet" href="dist/sweetalert.css">
     
-	<title>Aplikasi Tikecting Helpdesk IT | www.hakkoblogs.com</title>
+	<title>Aplikasi Tikecting Helpdesk IT</title>
 </head>
 <body>
 
@@ -60,8 +60,8 @@
     require_once("phpmailer/class.smtp.php");
     
     $sendmail = new PHPMailer();
-    $sendmail->setFrom('hakkobiorichard@outlook.com','IT Helpdesk Tiket'); //email pengirim
-    $sendmail->addReplyTo('hakkobiorichard@outlook.com','Hakko Bio Richard'); //email replay
+    $sendmail->setFrom('adoladil630@gmail.com','IT Helpdesk Tiket'); //email pengirim
+    $sendmail->addReplyTo('adoladil630@gmail.com','Hakko Bio Richard'); //email replay
     $sendmail->addAddress("$email","$nama"); //email tujuan
     //$sendmail->AddBCC("$email");
     $sendmail->Subject = "Tiket IT Helpdesk $id_tiket"; //subjek email
@@ -106,10 +106,10 @@
 
 	<form class="cd-form floating-labels" method="POST" action="index.php">
 		<fieldset>
-			<legend>Ticketing Helpdesk IT | www.hakkoblogs.com</legend>
+			<legend>Ticketing Helpdesk IT</legend>
             
             
-            <li>Isi Ticket dengan baik agar jelas informasinya.</li><br />
+            <li>Isi Ticket dengan baik agar jelas informasi permasalahan.</li><br />
             <li>Ticket diselesaikan oleh IT berdasarkan urutan antrian.</li><br />
             <li>Ticket wajib di isi, bila tidak IT tidak akan datang ke lokasi.</li><br />
 
@@ -133,8 +133,9 @@
 		    <div class="icon">
 		    	<label class="cd-label" for="cd-email">Departemen</label>
 				<select class="email" name="departemen" id="departemen" required>
-                <option value=""></option>
-                <option value="PPIC">PPIC</option>
+                    <option value=""></option>
+                <option value="Rnd KB-TK">RnD KB-TK</option>
+                <option value="PPIC">RnD </option>
                 <option value="Engineering">Engineering</option>
                 <option value="Maintenance">Maintenance</option>
                 <option value="Accounting">Accounting</option>
@@ -163,7 +164,30 @@
 
            <!-- <script>
   sweetAlert("Hello world!");
-  </script> --> 
+  </script> -->
+
+
+
+<!-- --><?php
+//
+// if(isset($_POST['Submit'])) {
+//     $id_tiket = $_POST['id_tiket'];
+//     $tanggal = $_POST['tanggal'];
+//     $nama = $_POST['nama'];
+//     $email = $_POST['email'];
+//     $departemen = $_POST['departemen'];
+//     $problem = $_POST['problem'];
+//
+//     // include database connection file
+//     include_once("config.php");
+//
+//     // Insert user data into table
+//     $result = mysqli_query($koneksi, "INSERT INTO tiket(name,email,mobile) VALUES('$id_tiket','$tanggal','$nama','$email','$departemen','$problem')");
+//
+//     // Show message when user added
+//     echo $result;
+// }
+// ?>
   
 <script>
             $(document).ready(function() {

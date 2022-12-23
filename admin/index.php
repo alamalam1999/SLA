@@ -1,5 +1,7 @@
-<?php 
-session_start();
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 if (empty($_SESSION['username'])){
 	header('location:../index.php');	
 } else {
@@ -254,7 +256,7 @@ $_SESSION['start_time'] = time();
                                         <!-- <a href="#" class="secondary-content"><i class="mdi-action-grade"></i></a>-->
                                     </li>
                                     <?php
-                    $tanggal = date("Y/m/d");
+                    $tanggal = date("Y-m-d");
                     $query= "SELECT * FROM tiket WHERE status='open' limit 7";
                     $tampil=mysqli_query($koneksi, $query) or die(mysqli_error());
                     ?>
@@ -292,7 +294,7 @@ $_SESSION['start_time'] = time();
                                         <!-- <a href="#" class="secondary    -content"><i class="mdi-action-grade"></i></a> -->
                                     </li>
                     <?php
-                    $tanggal = date("Y/m/d");
+                    $tanggal = date("Y-m-d");
                     $query1= "SELECT * FROM tiket WHERE status='close' limit 7";
                     $tampil1=mysqli_query($koneksi, $query1) or die(mysqli_error());
                     ?>

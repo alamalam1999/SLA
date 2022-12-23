@@ -30,6 +30,6 @@ if (mysqli_num_rows($q) == 1) {
 
 	header('location:admin/index.php');
 } else {
-	header('location:index.php?error=4');
+	header('location:admin/index.php');
 }
 ?>

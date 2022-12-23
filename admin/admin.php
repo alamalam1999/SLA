@@ -3,7 +3,7 @@ session_start();
 if (empty($_SESSION['username'])){
 	header('location:../index.php');	
 } else {
-	include "../conn.php";
+	include "index.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,7 +29,7 @@ if (empty($_SESSION['username'])){
   <!-- //////////////////////////////////////////////////////////////////////////// -->
 
   <!-- START HEADER -->
-<?php include "header.php"; ?>
+
   <!-- END HEADER -->
 
   <!-- //////////////////////////////////////////////////////////////////////////// -->
