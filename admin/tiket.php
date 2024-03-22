@@ -129,12 +129,14 @@ if (empty($_SESSION['username'])){
 
                                     <th>Id Tiket</th>
                                     <th>Tanggal</th>
-                                    <th>PC No</th>
+                                    <th>Nama Barang</th>
                                     <th>Nama</th>
                                     <th>Email</th>
                                     <th>Departemen</th>
                                     <th>Problem</th>
                                     <th>Status</th>
+                                    <th>Pic</th>
+                                    <th>View</th>
                                     <th>Tool</th>
 
 

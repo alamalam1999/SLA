@@ -98,7 +98,7 @@ $_SESSION['start_time'] = time();
                   $no_hp=$_POST['no_hp'];
                   $level=$_POST['level'];
 				
-				$update = mysqli_query($koneksi, "UPDATE user SET username='$tanggal', password='$pc_no', fullname='$nama', no_hp='$email', level='$departemen' WHERE user_id='$kd'") or die(mysqli_error());
+				$update = mysqli_query($koneksi, "UPDATE user SET username='$username', password='$password', fullname='$fullname', no_hp='$no_hp', level='$level' WHERE user_id='$kd'") or die(mysqli_error());
 				if($update){
 					echo '<script>sweetAlert({
 	                                                   title: "Berhasil!", 
@@ -168,7 +168,7 @@ $_SESSION['start_time'] = time();
                       </div>
                         <div class="row">
                           <div class="input-field col s12">
-                            <button class="btn cyan waves-effect waves-light right" type="submit" name="input" id="update">Submit</button>
+                            <button class="btn cyan waves-effect waves-light right" type="submit" name="update" id="update">Submit</button>
                             <a href="admin.php" style="margin-right=20px" class="btn orange waves-effect waves-light right" type="submit" name="input" id="update">Kembali
                             </a>
                           </div>

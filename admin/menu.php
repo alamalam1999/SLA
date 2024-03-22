@@ -24,11 +24,24 @@
                             </div>
                         </div>
                     </li>
-                    <li class="bold"><a href="index.php" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i> Dashboard</a>
-                    </li>
+                    <!--<li class="bold"><a href="index.php" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i> Dashboard</a>-->
+                    <!--</li>-->
+                     <li class="no-padding">
+                        <ul class="collapsible collapsible-accordion">
+                            <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-dashboard"></i> Dashboard</a>
+                                <div class="collapsible-body">
+                                    <ul>
+                                        <li><a href="index.php">Data Tiket</a></li>   
+                                        <li><a href="index-gsuite.php">Data TIket G-Suite</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </li> 
                     <?php
-                    $tanggal = date("D/m/y");
-                     $tampil2=mysqli_query($koneksi, "select * from tiket where tanggal='$tanggal' and status='open'");
+                    $tanggal = date("Y-m-d");
+                    //  $tampil2=mysqli_query($koneksi, "select * from tiket where tanggal='$tanggal' and status='open'");
+                     $tampil2 = mysqli_query($koneksi, "SELECT id_tiket FROM `tiket_gsuite` WHERE status = 'new' and tanggal ='$tanggal'  UNION SELECT id_tiket FROM `tiket` WHERE status = 'new' and tanggal ='$tanggal'");
                         $total2=mysqli_num_rows($tampil2);
                         ?>
                     <li class="no-padding">
@@ -36,8 +49,8 @@
                             <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-communication-email"></i> Tiket <span class="new badge"><?php echo $total2; ?></span></a>
                                 <div class="collapsible-body">
                                     <ul>
-                                        <li><a href="tiket.php">Data Tiket</a>
-                                        </li>                                        
+                                        <li><a href="tiket.php">Data Tiket</a></li>
+                                        <li><a href="tiketgsuite.php">Data Tiket G-Suite</a></li>
                                     </ul>
                                 </div>
                             </li>

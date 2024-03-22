@@ -1,12 +1,12 @@
 <html>
 <head>
-<title>IT Helpdesk System | www.hakkoblogs.com</title>
-<meta name="author" content="Hakko Bio Richard"/>
+<title>IT Helpdesk System</title>
+<meta name="author" content="ICT"/>
 
 <link rel="stylesheet" type="text/css" href="datatables/dataTables.bootstrap.css"/>
 <link rel="stylesheet" type="text/css" href="dist/css/bootstrap.min.css"/>
 </head>
-<body>
+<body  style="background-image: url('image/rm380-14.jpg'); background-size: 1430px 1100px;">
 <h3><center>Data Ticket IT Helpdesk System</center></h3>
 <div class="col-lg-12" style="margin-top: 40px;">
 
@@ -16,13 +16,13 @@
 	  
        <th>Id Tiket</th>
 	   <th>Tanggal</th>
-       <th>PC No</th>
+       <th>Nama Barang</th>
        <th>Nama</th>
-       <th>Email</th>
        <th>Departemen</th>
-       <th>Problem</th>
+       <th>Permasalahan</th>
        <th>Status</th>
-	   
+	   <th>Pic</th>
+	   <th>Penanganan</th>
 	  
       </tr>
     </thead>

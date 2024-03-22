@@ -3,7 +3,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "tiket";
+$dbname = "tiket_db";
 
 $conn = mysqli_connect($servername, $username, $password, $dbname) or die("Connection failed: " . mysqli_connect_error());
 
@@ -22,11 +22,12 @@ $columns = array(
     4 => 'email',
     5 => 'departemen',
     6 => 'problem',
-    7 => 'status'
+    7 => 'status',
+    8 => 'pic'
 );
 
 // getting total number records without any search
-$sql = "SELECT id_tiket, tanggal, pc_no, nama, email, departemen, problem, status";
+$sql = "SELECT id_tiket, tanggal, pc_no, nama, email, departemen, problem, status, filename, pic";
 $sql.=" FROM tiket";
 $query=mysqli_query($conn, $sql) or die("ajax-grid-data.php: get Tiket");
 $totalData = mysqli_num_rows($query);
@@ -35,7 +36,7 @@ $totalFiltered = $totalData;  // when there is no search parameter then total nu
 
 if( !empty($requestData['search']['value']) ) {
 	// if there is a search parameter
-	$sql = "SELECT id_tiket, tanggal, pc_no, nama, email, departemen, problem, status";
+	$sql = "SELECT id_tiket, tanggal, pc_no, nama, email, departemen, problem, status, filename, pic";
 	$sql.=" FROM tiket";
 	$sql.=" WHERE id_tiket LIKE '".$requestData['search']['value']."%' ";    // $requestData['search']['value'] contains search parameter
 	$sql.=" OR tanggal LIKE '".$requestData['search']['value']."%' ";
@@ -45,6 +46,7 @@ if( !empty($requestData['search']['value']) ) {
     $sql.=" OR departemen LIKE '".$requestData['search']['value']."%' ";
     $sql.=" OR problem LIKE '".$requestData['search']['value']."%' ";
     $sql.=" OR status LIKE '".$requestData['search']['value']."%' ";
+    $sql.=" OR pic LIKE '".$requestData['seacrh']['value']."%' ";
 	$query=mysqli_query($conn, $sql) or die("ajax-grid-data.php: get Tiket");
 	$totalFiltered = mysqli_num_rows($query); // when there is a search parameter then we have to modify total number filtered rows as per search result without limit in the query 
 
@@ -53,7 +55,7 @@ if( !empty($requestData['search']['value']) ) {
 	
 } else {	
 
-	$sql = "SELECT id_tiket, tanggal, pc_no, nama, email, departemen, problem, status";
+	$sql = "SELECT id_tiket, tanggal, pc_no, nama, email, departemen, problem, status, filename, pic";
 	$sql.=" FROM tiket";
 	$sql.=" ORDER BY ". $columns[$requestData['order'][0]['column']]."   ".$requestData['order'][0]['dir']."   LIMIT ".$requestData['start']." ,".$requestData['length']."   ";
 	$query=mysqli_query($conn, $sql) or die("ajax-grid-data.php: get Tiket");   
@@ -72,6 +74,15 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
     $nestedData[] = $row["departemen"];
     $nestedData[] = $row["problem"];
     $nestedData[] = $row["status"];
+    $nestedData[] = $row["pic"];
+    
+    if($row["filename"] != null && $row["filename"] != '') {
+		$nestedData[] = 	'<a href="/tiket/image/'. $row["filename"].'" style="color:#eee; text-align: center;"  data-toggle="tooltip" title="Edit" class="btn-floating waves-effect waves-light light-blue darken-3">view</a>';
+
+	}else {
+		$nestedData[] =  '';
+	}
+    
     $nestedData[] = '<td><center>
                      <a href="edit-tiket.php?id='.$row['id_tiket'].'" style="color:#eee;"  data-toggle="tooltip" title="Edit" class="btn-floating waves-effect waves-light light-blue darken-3"><i class="mdi-editor-mode-edit"></i> </a>
 				     <a href="tiket.php?aksi=delete&id='.$row['id_tiket'].'"  data-toggle="tooltip" title="Delete" onclick="return confirm(\'Anda yakin akan menghapus data '.$row['id_tiket'].'?\')" class="btn-floating waves-effect waves-light red"><i class="mdi-action-delete"></i> </a>

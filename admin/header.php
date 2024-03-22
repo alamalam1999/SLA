@@ -3,7 +3,7 @@
         <div class="navbar-fixed">
             <nav class="cyan">
                 <div class="nav-wrapper">
-                    <h5 class="logo-wrapper"><a href="index.php" class="brand-logo darken-1"><!-- <img src="images/materialize-logo.png" alt="materialize logo">--> <span class="logo-text">IT Helpdesk <i class="mdi-action-delete"></i> </span>   </a> </h5>
+                    <h5 class="logo-wrapper"><a href="index.php" class="brand-logo darken-1"><!-- <img src="images/materialize-logo.png" alt="materialize logo">--> <span class="logo-text">IT Helpdesk BPS <i class="mdi-action-delete"></i> </span>   </a> </h5>
                     <!-- <ul class="right hide-on-med-and-down">
                         <li class="search-out">
                             <input type="text" class="search-out-text">
