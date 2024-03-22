@@ -17,11 +17,11 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 </head>
 
-<body id="bodytemplate" style="background-image: url('image/SLA Image.jpg'); background-size: auto auto;">
+<body id="bodytemplate">
     <!-- your project is here -->
     <section class="vh-100">
         <div class="container py-5 h-100">
@@ -63,6 +63,14 @@
         </div>
     </section>
     <!-- End your project here-->
+
+    <!-- style="background-image: url('image/SLA Image.jpg'); background-size: auto auto;" -->
+    <script>
+        var _img = document.getElementById('bodytemplate');
+        $("#bodytemplate").css("background-image", "url('image/SLA-Image.jpg')");
+        $("#bodytemplate").css("background-size", "auto auto");
+        console.log(_img);
+    </script>
     <script type="text/javascript" src="js/mdb.min.js"></script>
     <!-- Custom scripts -->
     <script type="text/javascript"></script>
