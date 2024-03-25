@@ -25,8 +25,8 @@ $("#invoice-line").sparkline([5, 6, 7, 9, 9, 5, 3, 2, 2, 4, 6, 7, 5, 6, 7, 9, 9,
     maxSpotColor: '#4caf50',
     spotColor: '#E1D0FF',
     spotRadius: 4,
-    
-   // //tooltipFormat: $.spformat('{{value}}', 'tooltip-class')
+
+    // //tooltipFormat: $.spformat('{{value}}', 'tooltip-class')
 });
 
 
@@ -158,10 +158,10 @@ Sparkline sample charts
 
 $("#bar-chart-sample").sparkline([70, 80, 65, 78, 58, 80, 78, 80, 70, 50, 75, 65, 80, 70], {
     type: 'bar',
-    height: '100',
-    width: '50%',
-    barWidth: 20,
-    barSpacing: 10,
+    height: '25',
+    width: '100%',
+    barWidth: 10,
+    barSpacing: 6,
     barColor: '#00BCD4',
     //tooltipFormat: $.spformat('{{value}}', 'tooltip-class')
 });
@@ -184,10 +184,10 @@ $("#line-chart-sample").sparkline([5, 6, 7, 9, 9, 5, 3, 2, 2, 4, 6, 7, 5, 6, 7, 
 });
 
 
-$("#pie-chart-sample").sparkline([50,60,80,110], {
+$("#pie-chart-sample").sparkline([50, 60, 80, 110], {
     type: 'pie',
     width: '150',
     height: '150',
     //tooltipFormat: $.spformat('{{value}}', 'tooltip-class'),
-    sliceColors: ['#f4511e','#ffea00','#c6ff00','#00e676','#1de9b6','#00e5ff','#651fff','#f50057']
+    sliceColors: ['#f4511e', '#ffea00', '#c6ff00', '#00e676', '#1de9b6', '#00e5ff', '#651fff', '#f50057']
 });

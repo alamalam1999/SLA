@@ -1,454 +1,330 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-if (empty($_SESSION['username'])){
-	header('location:../index.php');
+session_start();
+if (empty($_SESSION['username'])) {
+    header('location:../index.php');
 } else {
-	include "../conn.php";
+    include "../conn.php";
 ?>
-<!DOCTYPE html>
-<html lang="en">
+    <!DOCTYPE html>
+    <html lang="en">
+    <?php
+    // start head
+    include "head/head_dashboard.php";
+    // end head
+    ?>
 
-<!--================================================================================
-	Item Name: Materialize - Material Design Admin Template
-	Version: 1.0
-	Author: GeeksLabs
-	Author URL: http://www.themeforest.net/user/geekslabs
-================================================================================ -->
-
-<?php include "head.php"; ?>
-
-<body>
-    <!-- Start Page Loading -->
-    <div id="loader-wrapper">
-        <div id="loader"></div>
-        <div class="loader-section section-left"></div>
-        <div class="loader-section section-right"></div>
-    </div>
-    <!-- End Page Loading -->
-
-    <!-- //////////////////////////////////////////////////////////////////////////// -->
-
-    <!-- START HEADER -->
-    <?php include "header.php"; ?>
-    <!-- END HEADER -->
-
-    <!-- //////////////////////////////////////////////////////////////////////////// -->
-
-    <!-- START MAIN -->
-    <div id="main">
-        <!-- START WRAPPER -->
-        <div class="wrapper">
-
+    <body id="page-top">
+        <!-- START MAIN -->
+        <div id="wrapper">
             <!-- START LEFT SIDEBAR NAV-->
-            <?php include "menu.php"; ?>
+            <?php include "menu-tiket.php"; ?>
             <?php
-$timeout = 10; // Set timeout minutes
-$logout_redirect_url = "../index.php"; // Set logout URL
+            $timeout = 10; // Set timeout minutes
+            $logout_redirect_url = "../index.php"; // Set logout URL
 
-$timeout = $timeout * 60; // Converts minutes to seconds
-if (isset($_SESSION['start_time'])) {
-    $elapsed_time = time() - $_SESSION['start_time'];
-    if ($elapsed_time >= $timeout) {
-        session_destroy();
-        echo "<script>alert('Session Anda Telah Habis!'); window.location = '$logout_redirect_url'</script>";
-    }
-}
-$_SESSION['start_time'] = time();
-?>
-<?php } ?>
-            <!-- END LEFT SIDEBAR NAV-->
+            $timeout = $timeout * 60; // Converts minutes to seconds
+            if (isset($_SESSION['start_time'])) {
+                $elapsed_time = time() - $_SESSION['start_time'];
+                if ($elapsed_time >= $timeout) {
+                    session_destroy();
+                    echo "<script>alert('Session Anda Telah Habis!'); window.location = '$logout_redirect_url'</script>";
+                }
+            }
+            $_SESSION['start_time'] = time();
+            ?>
+        <?php } ?>
+        <!-- END LEFT SIDEBAR NAV-->
+        <!-- START CONTENT -->
+        <div id="content-wrapper" class="d-flex flex-column">
 
-            <!-- //////////////////////////////////////////////////////////////////////////// -->
+            <!-- Main Content -->
+            <div id="content">
 
-            <!-- START CONTENT -->
-            <section id="content">
+                <!-- START HEADER -->
+                <?php
+                include "header-tiket.php";
+                ?>
+                <!-- END HEADER -->
 
-                <!--start container-->
-                <div class="container">
-                    <!--card stats start-->
-                    <div id="card-stats">
-                        <div class="row">
-                        <?php $tampil=mysqli_query($koneksi, "select * from tiket_gsuite where status='open'");
-                        $total=mysqli_num_rows($tampil);
-                        ?>
-                            <div class="col s12 m6 l3">
-                                <div class="card">
-                                    <div class="card-content  green white-text">
-                                        <p class="card-stats-title"><i class="mdi-social-group-add"></i> Tiket Baru</p>
-                                        <h4 class="card-stats-number"><?php echo $total; ?></h4>
-                                        <p class="card-stats-compare"><!-- <i class="mdi-hardware-keyboard-arrow-up"></i> --> <span class="green-text text-lighten-5">Belum Ditangani</span>
-                                        </p>
-                                    </div>
-                                    <div class="card-action  green darken-2">
-                                        <div id="clients-bar"></div>
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Data Ticket G-Suite</h1>
+                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+                    </div>
+
+                    <!--start container-->
+                    <div class="row">
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <?php $tampil = mysqli_query($koneksi, "select * from tiket_gsuite where status='new'");
+                                            $total = mysqli_num_rows($tampil);
+                                            ?>
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                Tiket Baru</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $total; ?></div>
+                                        </div>
+                                        <div class="card-action  green darken-2">
+                                            <div id="clients-bar"></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <?php $tampil1=mysqli_query($koneksi, "select * from tiket_gsuite where status='close'");
-                        $total1=mysqli_num_rows($tampil1);
-                        ?>
-                            <div class="col s12 m6 l3">
-                                <div class="card">
-                                    <div class="card-content purple white-text">
-                                        <p class="card-stats-title"><i class="mdi-social-group-add"></i> Tiket Selesai</p>
-                                        <h4 class="card-stats-number"><?php echo $total1 ?></h4>
-                                        <p class="card-stats-compare"><!-- <i class="mdi-hardware-keyboard-arrow-up"></i> --> <span class="purple-text text-lighten-5">Sudah Ditangani</span>
-                                        </p>
-                                    </div>
-                                    <div class="card-action purple darken-2">
-                                        <div id="sales-compositebar"></div>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <?php $tampil2=mysqli_query($koneksi, "select * from tiket_gsuite order by id_tiket");
-                        $total2=mysqli_num_rows($tampil2);
-                        ?>
-                            <div class="col s12 m6 l3">
-                                <div class="card">
-                                    <div class="card-content blue-grey white-text">
-                                        <p class="card-stats-title"><i class="mdi-action-trending-up"></i> Tiket</p>
-                                        <h4 class="card-stats-number"><?php echo $total2; ?></h4>
-                                        <p class="card-stats-compare"><!-- <i class="mdi-hardware-keyboard-arrow-up"></i> --> <span class="blue-grey-text text-lighten-5">Total Tiket Masuk</span>
-                                        </p>
-                                    </div>
-                                    <div class="card-action blue-grey darken-2">
-                                        <div id="profit-tristate"></div>
+                        </div>
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <?php $tampil1 = mysqli_query($koneksi, "select * from tiket_gsuite where status='close'");
+                                            $total1 = mysqli_num_rows($tampil1);
+                                            ?>
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                Tiket Selesai</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $total1; ?></div>
+                                        </div>
+                                        <div class="card-action  green darken-2">
+                                            <div id="sales-compositebar"></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <?php $tampil3=mysqli_query($koneksi, "select * from user order by user_id");
-                        $total3=mysqli_num_rows($tampil3);
-                        ?>
-                            <div class="col s12 m6 l3">
-                                <div class="card">
-                                    <div class="card-content deep-purple white-text">
-                                        <p class="card-stats-title"><i class="mdi-editor-insert-drive-file"></i> Admin</p>
-                                        <h4 class="card-stats-number"><?php echo $total3; ?></h4>
-                                        <p class="card-stats-compare"><!-- <i class="mdi-hardware-keyboard-arrow-down"></i> 3% --><span class="deep-purple-text text-lighten-5">Users</span>
-                                        </p>
+                        </div>
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <?php $tampil2 = mysqli_query($koneksi, "select * from tiket_gsuite order by id_tiket");
+                                            $total2 = mysqli_num_rows($tampil2);
+                                            ?>
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                Tiket</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $total2; ?></div>
+                                        </div>
+                                        <div class="card-action  green darken-2">
+                                            <div id="profit-tristate"></div>
+                                        </div>
                                     </div>
-                                    <div class="card-action  deep-purple darken-2">
-                                        <div id="invoice-line"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <?php $tampil3 = mysqli_query($koneksi, "select * from user order by user_id");
+                                            $total3 = mysqli_num_rows($tampil3);
+                                            ?>
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                Admin</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $total3; ?></div>
+                                        </div>
+                                        <div class="card-action  green darken-2">
+                                            <div id="bar-chart-sample"></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div id="work-collections">
-                        <div class="row">
-                            <div class="col s12 m12 l6">
-                                <ul id="projects-collection" class="collection">
-                                    <li class="collection-item avatar">
-                                        <i class="mdi-action-bug-report circle red darken-2"></i>
-                                        <span class="collection-header">Task Tiket</span>
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6">
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">Task Ticket
                                         <?php
-                                                echo $_SESSION['username'];
+                                        echo $_SESSION['username'];
+                                        ?></h6>
+                                    <div class="dropdown no-arrow">
+                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                                            <div class="dropdown-header">Dropdown Header:</div>
+                                            <a class="dropdown-item" href="#">Action</a>
+                                            <a class="dropdown-item" href="#">Another action</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="#">Something else here</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <ul id="projects-collection" class="collection">
+                                        <li class="collection-item avatar">
+                                            <i class="mdi-action-bug-report circle red darken-2"></i>
+                                            <span class="collection-header">Task Tiket</span>
+                                            <?php
+                                            echo $_SESSION['username'];
+                                            ?>
+                                            <p>Status <b style="color: red;">New</b></p>
+                                            <!-- <a href="#" class="secondary-content"><i class="mdi-action-grade"></i></a>-->
+                                        </li>
+                                        <?php
+                                        $tanggal = date("Y-m-d");
+                                        $query = "SELECT * FROM tiket_gsuite WHERE status='new' limit 5";
+                                        $tampil = mysqli_query($koneksi, $query) or die(mysqli_error());
                                         ?>
-                                        <p>Status <b style="color: red;">New</b></p>
-                                        <!-- <a href="#" class="secondary-content"><i class="mdi-action-grade"></i></a>-->
-                                    </li>
-                                    <?php
-                    $tanggal = date("Y-m-d");
-                    $query= "SELECT * FROM tiket_gsuite WHERE status='new' limit 5";
-                    $tampil=mysqli_query($koneksi, $query) or die(mysqli_error());
-                    ?>
-                    <?php
-                    $no=0;
-                    while($data=mysqli_fetch_array($tampil))
-                    { $no++; ?>
-                                    <li class="collection-item">
-                                        <div class="row">
-                                            <div class="col s9">
-                                            <?php
-                                                $kind = '';
-                                                if ($data["name"]== 3) {
-                                                    $kind = 'Pembuatan Akun G-Suite';
-                                                } else if ($data["name"] == 2) {
-                                                    $kind = 'Lupa Password';
-                                                } else {
-                                                    $kind = 'Akun Ditangguhkan';
-                                                }
-                                            ?>
-                                                <p class="collections-title"><?php echo $no; ?>. <?php echo $kind; ?> | <?php echo $data["tanggal"]; ?></p>
-                                                <p class="collections-content">Problem : <?php echo $data['email']; ?></p>
-                                            </div>
-                                            <div class="col s3">
-                                            <?php if($data['status'] == "open" ){
-                                                 echo "<span class='task-cat pink'>Tiket $data[status]</span>";
-                                                 } else if ($data['status'] == "close"){
-                                                 echo "<span class='task-cat teal'>Tiket $data[status]</span>";
-                                                 }
-                                                ?>
-                                            </div>
-                                        </div>
-                                    </li>
-                         <?php
-              }
-              ?>
-                                </ul>
+                                        <?php
+                                        $no = 0;
+                                        while ($data = mysqli_fetch_array($tampil)) {
+                                            $no++; ?>
+                                            <li class="collection-item">
+                                                <div class="row">
+                                                    <div class="col s9">
+                                                        <?php
+                                                        $kind = '';
+                                                        if ($data["name"] == 3) {
+                                                            $kind = 'Pembuatan Akun G-Suite';
+                                                        } else if ($data["name"] == 2) {
+                                                            $kind = 'Lupa Password';
+                                                        } else {
+                                                            $kind = 'Akun Ditangguhkan';
+                                                        }
+                                                        ?>
+                                                        <p class="collections-title"><?php echo $no; ?>. <?php echo $kind; ?> | <?php echo $data["tanggal"]; ?></p>
+                                                        <p class="collections-content">Problem : <?php echo $data['email']; ?></p>
+                                                    </div>
+                                                    <div class="col s3">
+                                                        <?php if ($data['status'] == "open") {
+                                                            echo "<span class='task-cat pink'>Tiket $data[status]</span>";
+                                                        } else if ($data['status'] == "close") {
+                                                            echo "<span class='task-cat teal'>Tiket $data[status]</span>";
+                                                        }
+                                                        ?>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        <?php
+                                        }
+                                        ?>
+                                    </ul>
+                                </div>
                             </div>
-                            <div class="col s12 m12 l6">
-                                <ul id="issues-collection" class="collection">
-                                    <li class="collection-item avatar">
-                                        <i class="mdi-file-folder circle light-blue darken-2"></i>
-                                        <span class="collection-header">Task Tiket</span>
-                                        <p>Status <b style="color: blue;">Close</b></p>
-                                        <!-- <a href="#" class="secondary    -content"><i class="mdi-action-grade"></i></a> -->
-                                    </li>
-                    <?php
-                    $tanggal = date("Y-m-d");
-                    $query1= "SELECT * FROM tiket_gsuite WHERE status='close' limit 7";
-                    $tampil1=mysqli_query($koneksi, $query1) or die(mysqli_error());
-                    ?>
-                    <?php
-                    $no=0;
-                    while($data1=mysqli_fetch_array($tampil1))
-                    { $no++; ?>
-                                    <li class="collection-item">
-                                        <div class="row">
-                                            <div class="col s9">
-                                            <?php
-                                                $kind = '';
-                                                if ($data1["name"]== 3) {
-                                                    $kind = 'Pembuatan Akun G-Suite';
-                                                } else if ($data1["name"] == 2) {
-                                                    $kind = 'Lupa Password';
-                                                } else {
-                                                    $kind = 'Akun Ditangguhkan';
-                                                }
-                                            ?>
-                                                <p class="collections-title"><?php echo $no; ?>. <?php echo $kind; ?> | <?php echo $data1['tanggal']; ?></p>
-                                                <p class="collections-content">Problem : <?php echo $data1['email']; ?></p>
-                                            </div>
-                                            <div class="col s3">
-                                            <?php if($data1['status'] == "open" ){
-                                                 echo "<span class='task-cat pink'>Tiket $data1[status]</span>";
-                                                 } else if ($data1['status'] == "close"){
-                                                 echo "<span class='task-cat teal'>Tiket $data1[status]</span>";
-                                                 }
-                                                ?>
-                                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6">
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">Task Ticket</h6>
+                                    <div class="dropdown no-arrow">
+                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                                            <div class="dropdown-header">Dropdown Header:</div>
+                                            <a class="dropdown-item" href="#">Action</a>
+                                            <a class="dropdown-item" href="#">Another action</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="#">Something else here</a>
                                         </div>
-                                    </li>
-                                                 <?php
-                                }
-                                ?>
-                                </ul>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <ul id="issues-collection" class="collection">
+                                        <li class="collection-item avatar">
+                                            <i class="mdi-file-folder circle light-blue darken-2"></i>
+                                            <span class="collection-header">Task Tiket</span>
+                                            <p>Status <b style="color: blue;">Close</b></p>
+                                            <!-- <a href="#" class="secondary    -content"><i class="mdi-action-grade"></i></a> -->
+                                        </li>
+                                        <?php
+                                        $tanggal = date("Y-m-d");
+                                        $query1 = "SELECT * FROM tiket_gsuite WHERE status='close' limit 7";
+                                        $tampil1 = mysqli_query($koneksi, $query1) or die(mysqli_error());
+                                        ?>
+                                        <?php
+                                        $no = 0;
+                                        while ($data1 = mysqli_fetch_array($tampil1)) {
+                                            $no++; ?>
+                                            <li class="collection-item">
+                                                <div class="row">
+                                                    <div class="col s9">
+                                                        <?php
+                                                        $kind = '';
+                                                        if ($data1["name"] == 3) {
+                                                            $kind = 'Pembuatan Akun G-Suite';
+                                                        } else if ($data1["name"] == 2) {
+                                                            $kind = 'Lupa Password';
+                                                        } else {
+                                                            $kind = 'Akun Ditangguhkan';
+                                                        }
+                                                        ?>
+                                                        <p class="collections-title"><?php echo $no; ?>. <?php echo $kind; ?> | <?php echo $data1['tanggal']; ?></p>
+                                                        <p class="collections-content">Problem : <?php echo $data1['email']; ?></p>
+                                                    </div>
+                                                    <div class="col s3">
+                                                        <?php if ($data1['status'] == "open") {
+                                                            echo "<span class='task-cat pink'>Tiket $data1[status]</span>";
+                                                        } else if ($data1['status'] == "close") {
+                                                            echo "<span class='task-cat teal'>Tiket $data1[status]</span>";
+                                                        }
+                                                        ?>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        <?php
+                                        }
+                                        ?>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <!--work collections end-->
-
                 </div>
-                <!--end container-->
-            </section>
+            </div>
             <!-- END CONTENT -->
-
-            <!-- //////////////////////////////////////////////////////////////////////////// -->
-            <!-- START RIGHT SIDEBAR NAV-->
-            <aside id="right-sidebar-nav">
-                <ul id="chat-out" class="side-nav rightside-navigation">
-                    <li class="li-hover">
-                    <a href="#" data-activates="chat-out" class="chat-close-collapse right"><i class="mdi-navigation-close"></i></a>
-                    <div id="right-search" class="row">
-                        <form class="col s12">
-                            <div class="input-field">
-                                <i class="mdi-action-search prefix"></i>
-                                <input id="icon_prefix" type="text" class="validate">
-                                <label for="icon_prefix">Search</label>
-                            </div>
-                        </form>
-                    </div>
-                    </li>
-                    <li class="li-hover">
-                        <ul class="chat-collapsible" data-collapsible="expandable">
-                        <li>
-                            <div class="collapsible-header teal white-text active"><i class="mdi-social-whatshot"></i>Recent Activity</div>
-                            <div class="collapsible-body recent-activity">
-                                <div class="recent-activity-list chat-out-list row">
-                                    <div class="col s3 recent-activity-list-icon"><i class="mdi-action-add-shopping-cart"></i>
-                                    </div>
-                                    <div class="col s9 recent-activity-list-text">
-                                        <a href="#">just now</a>
-                                        <p>Jim Doe Purchased new equipments for zonal office.</p>
-                                    </div>
-                                </div>
-                                <div class="recent-activity-list chat-out-list row">
-                                    <div class="col s3 recent-activity-list-icon"><i class="mdi-device-airplanemode-on"></i>
-                                    </div>
-                                    <div class="col s9 recent-activity-list-text">
-                                        <a href="#">Yesterday</a>
-                                        <p>Your Next flight for USA will be on 15th August 2015.</p>
-                                    </div>
-                                </div>
-                                <div class="recent-activity-list chat-out-list row">
-                                    <div class="col s3 recent-activity-list-icon"><i class="mdi-action-settings-voice"></i>
-                                    </div>
-                                    <div class="col s9 recent-activity-list-text">
-                                        <a href="#">5 Days Ago</a>
-                                        <p>Natalya Parker Send you a voice mail for next conference.</p>
-                                    </div>
-                                </div>
-                                <div class="recent-activity-list chat-out-list row">
-                                    <div class="col s3 recent-activity-list-icon"><i class="mdi-action-store"></i>
-                                    </div>
-                                    <div class="col s9 recent-activity-list-text">
-                                        <a href="#">Last Week</a>
-                                        <p>Jessy Jay open a new store at S.G Road.</p>
-                                    </div>
-                                </div>
-                                <div class="recent-activity-list chat-out-list row">
-                                    <div class="col s3 recent-activity-list-icon"><i class="mdi-action-settings-voice"></i>
-                                    </div>
-                                    <div class="col s9 recent-activity-list-text">
-                                        <a href="#">5 Days Ago</a>
-                                        <p>Natalya Parker Send you a voice mail for next conference.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="collapsible-header light-blue white-text active"><i class="mdi-editor-attach-money"></i>Sales Repoart</div>
-                            <div class="collapsible-body sales-repoart">
-                                <div class="sales-repoart-list  chat-out-list row">
-                                    <div class="col s8">Target Salse</div>
-                                    <div class="col s4"><span id="sales-line-1"></span>
-                                    </div>
-                                </div>
-                                <div class="sales-repoart-list chat-out-list row">
-                                    <div class="col s8">Payment Due</div>
-                                    <div class="col s4"><span id="sales-bar-1"></span>
-                                    </div>
-                                </div>
-                                <div class="sales-repoart-list chat-out-list row">
-                                    <div class="col s8">Total Delivery</div>
-                                    <div class="col s4"><span id="sales-line-2"></span>
-                                    </div>
-                                </div>
-                                <div class="sales-repoart-list chat-out-list row">
-                                    <div class="col s8">Total Progress</div>
-                                    <div class="col s4"><span id="sales-bar-2"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="collapsible-header red white-text"><i class="mdi-action-stars"></i>Favorite Associates</div>
-                            <div class="collapsible-body favorite-associates">
-                                <div class="favorite-associate-list chat-out-list row">
-                                    <div class="col s4"><img src="images/avatar.jpg" alt="" class="circle responsive-img online-user valign profile-image">
-                                    </div>
-                                    <div class="col s8">
-                                        <p>Eileen Sideways</p>
-                                        <p class="place">Los Angeles, CA</p>
-                                    </div>
-                                </div>
-                                <div class="favorite-associate-list chat-out-list row">
-                                    <div class="col s4"><img src="images/avatar.jpg" alt="" class="circle responsive-img online-user valign profile-image">
-                                    </div>
-                                    <div class="col s8">
-                                        <p>Zaham Sindil</p>
-                                        <p class="place">San Francisco, CA</p>
-                                    </div>
-                                </div>
-                                <div class="favorite-associate-list chat-out-list row">
-                                    <div class="col s4"><img src="images/avatar.jpg" alt="" class="circle responsive-img offline-user valign profile-image">
-                                    </div>
-                                    <div class="col s8">
-                                        <p>Renov Leongal</p>
-                                        <p class="place">Cebu City, Philippines</p>
-                                    </div>
-                                </div>
-                                <div class="favorite-associate-list chat-out-list row">
-                                    <div class="col s4"><img src="images/avatar.jpg" alt="" class="circle responsive-img online-user valign profile-image">
-                                    </div>
-                                    <div class="col s8">
-                                        <p>Weno Carasbong</p>
-                                        <p>Tokyo, Japan</p>
-                                    </div>
-                                </div>
-                                <div class="favorite-associate-list chat-out-list row">
-                                    <div class="col s4"><img src="images/avatar.jpg" alt="" class="circle responsive-img offline-user valign profile-image">
-                                    </div>
-                                    <div class="col s8">
-                                        <p>Nusja Nawancali</p>
-                                        <p class="place">Bangkok, Thailand</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        </ul>
-                    </li>
-                </ul>
-            </aside>
-            <!-- LEFT RIGHT SIDEBAR NAV-->
-
+            <!-- START FOOTER -->
+            <?php include "footer-menu.php"; ?>
+            <!-- END FOOTER -->
         </div>
         <!-- END WRAPPER -->
+        </div>
 
-    </div>
-    <!-- END MAIN -->
+        <!-- Bootstrap core JavaScript-->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
+        <!-- Core plugin JavaScript-->
+        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
+        <!-- Custom scripts for all pages-->
+        <script src="js/sb-admin-2.min.js"></script>
 
-    <!-- //////////////////////////////////////////////////////////////////////////// -->
+        <!-- Page level plugins -->
+        <script src="vendor/chart.js/Chart.min.js"></script>
 
-    <!-- START FOOTER -->
-    <?php include "footer.php"; ?>
-    <!-- END FOOTER -->
+        <!-- Page level custom scripts -->
+        <script src="js/demo/chart-area-demo.js"></script>
+        <script src="js/demo/chart-pie-demo.js"></script>
 
+        <!-- jQuery Library -->
+        <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+        <!--materialize js-->
+        <script type="text/javascript" src="js/materialize.js"></script>
+        <!--prism-->
+        <script type="text/javascript" src="js/prism.js"></script>
+        <!--scrollbar-->
+        <script type="text/javascript" src="js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+        <!-- data-tables -->
+        <script type="text/javascript" src="js/plugins/data-tables/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="js/plugins/data-tables/data-tables-script.js"></script>
+        <!-- chartist -->
+        <script type="text/javascript" src="js/plugins/chartist-js/chartist.min.js"></script>
 
-    <!-- ================================================
-    Scripts
-    ================================================ -->
+        <!--plugins.js - Some Specific JS codes for Plugin Settings-->
+        <script type="text/javascript" src="js/plugins.js"></script>
 
-    <!-- jQuery Library -->
-    <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
-    <!--materialize js-->
-    <script type="text/javascript" src="js/materialize.min.js"></script>
-    <!--scrollbar-->
-    <script type="text/javascript" src="js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+        <!-- sparkline -->
+        <script type="text/javascript" src="js/plugins/sparkline/jquery.sparkline.min.js"></script>
+        <script type="text/javascript" src="js/plugins/sparkline/sparkline-script.js"></script>
 
+    </body>
 
-    <!-- chartist -->
-    <script type="text/javascript" src="js/plugins/chartist-js/chartist.min.js"></script>
-
-    <!-- chartjs -->
-    <script type="text/javascript" src="js/plugins/chartjs/chart.min.js"></script>
-    <script type="text/javascript" src="js/plugins/chartjs/chart-script.js"></script>
-
-    <!-- sparkline -->
-    <script type="text/javascript" src="js/plugins/sparkline/jquery.sparkline.min.js"></script>
-    <script type="text/javascript" src="js/plugins/sparkline/sparkline-script.js"></script>
-
-    <!--jvectormap-->
-    <script type="text/javascript" src="js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-    <script type="text/javascript" src="js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-    <script type="text/javascript" src="js/plugins/jvectormap/vectormap-script.js"></script>
-
-
-    <!--plugins.js - Some Specific JS codes for Plugin Settings-->
-    <script type="text/javascript" src="js/plugins.js"></script>
-    <!-- Toast Notification -->
-    <script type="text/javascript">
-    // Toast Notification
-    $(window).load(function() {
-        setTimeout(function() {
-            Materialize.toast('<span>Hiya! I am a toast.</span>', 1500);
-        }, 3000);
-        setTimeout(function() {
-            Materialize.toast('<span>You can swipe me too!</span>', 3000);
-        }, 5500);
-        setTimeout(function() {
-            Materialize.toast('<span>You have new order.</span><a class="btn-flat yellow-text" href="#">Read<a>', 3000);
-        }, 18000);
-    });
-
-    </script>
-</body>
-
-</html>
+    </html>
