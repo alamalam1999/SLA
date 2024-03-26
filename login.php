@@ -28,7 +28,7 @@
 
 
   <!-- CORE CSS-->
-  
+
   <link href="admin/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
   <link href="admin/css/style.css" type="text/css" rel="stylesheet" media="screen,projection">
   <link href="admin/css/page-center.css" type="text/css" rel="stylesheet" media="screen,projection">
@@ -36,15 +36,15 @@
   <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
   <link href="admin/css/prism.css" type="text/css" rel="stylesheet" media="screen,projection">
   <link href="admin/js/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection">
-  
+
 </head>
 
-<body class="cyan">
+<body class="blue">
   <!-- Start Page Loading -->
   <div id="loader-wrapper">
-      <div id="loader"></div>        
-      <div class="loader-section section-left"></div>
-      <div class="loader-section section-right"></div>
+    <div id="loader"></div>
+    <div class="loader-section section-left"></div>
+    <div class="loader-section section-right"></div>
   </div>
   <!-- End Page Loading -->
 
@@ -56,7 +56,7 @@
         <div class="row">
           <div class="input-field col s12 center">
             <!-- <img src="images/login-logo.png" alt="" class="circle responsive-img valign profile-image-login"> -->
-            <p class="center login-form-text">Login Helpdesk IT</p>
+            <p class="center login-form-text">Login LSA</p>
           </div>
         </div>
         <div class="row margin">
@@ -92,27 +92,20 @@
               <p class="margin right-align medium-small"><a href="page-forgot-password.html">Forgot password ?</a></p>
           </div>          
         </div> -->
-<center><a href="#">Copyright &copy; ICT</a><br /><br /></center>
+        <center><a href="#">Copyright Transformasi Digital &copy; ICT</a><br /><br /></center>
       </form>
     </div>
 
+    <script type="text/javascript" src="admin/js/jquery-1.11.2.min.js"></script>
+    <!--materialize js-->
+    <script type="text/javascript" src="admin/js/materialize.js"></script>
+    <!--prism-->
+    <script type="text/javascript" src="admin/js/prism.js"></script>
+    <!--scrollbar-->
+    <script type="text/javascript" src="admin/js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 
-
-  <!-- ================================================
-    Scripts
-    ================================================ -->
-
-  <!-- jQuery Library -->
-  <script type="text/javascript" src="admin/js/jquery-1.11.2.min.js"></script>
-  <!--materialize js-->
-  <script type="text/javascript" src="admin/js/materialize.js"></script>
-  <!--prism-->
-  <script type="text/javascript" src="admin/js/prism.js"></script>
-  <!--scrollbar-->
-  <script type="text/javascript" src="admin/js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-
-  <!--plugins.js - Some Specific JS codes for Plugin Settings-->
-  <script type="text/javascript" src="admin/js/plugins.js"></script>
+    <!--plugins.js - Some Specific JS codes for Plugin Settings-->
+    <script type="text/javascript" src="admin/js/plugins.js"></script>
 
 </body>
 

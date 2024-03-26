@@ -6,15 +6,10 @@ $password = "";
 $dbname = "tiket_db";
 
 $conn = mysqli_connect($servername, $username, $password, $dbname) or die("Connection failed: " . mysqli_connect_error());
-
-/* Database connection end */
-
-// storing  request (ie, get/post) global array to a variable  
 $requestData = $_REQUEST;
 
 
 $columns = array(
-	// datatable column index  => database column name
 	0 => 'user_id',
 	1 => 'username',
 	2 => 'password',
@@ -30,7 +25,6 @@ $query = mysqli_query($conn, $sql) or die("ajax-grid-data.php: get Tiket");
 $totalData = mysqli_num_rows($query);
 $totalFiltered = $totalData;  // when there is no search parameter then total number rows = total number filtered rows.
 
-
 if (!empty($requestData['search']['value'])) {
 	// if there is a search parameter
 	$sql = "SELECT user_id, username, password, fullname, no_hp, level";
@@ -43,7 +37,6 @@ if (!empty($requestData['search']['value'])) {
 	$sql .= " OR level LIKE '" . $requestData['search']['value'] . "%' ";
 	$query = mysqli_query($conn, $sql) or die("ajax-grid-data.php: get Tiket");
 	$totalFiltered = mysqli_num_rows($query); // when there is a search parameter then we have to modify total number filtered rows as per search result without limit in the query 
-
 	$sql .= " ORDER BY " . $columns[$requestData['order'][0]['column']] . "   " . $requestData['order'][0]['dir'] . "   LIMIT " . $requestData['start'] . " ," . $requestData['length'] . "   "; // $requestData['order'][0]['column'] contains colmun index, $requestData['order'][0]['dir'] contains order such as asc/desc , $requestData['start'] contains start row number ,$requestData['length'] contains limit length.
 	$query = mysqli_query($conn, $sql) or die("ajax-grid-data.php: get Tiket"); // again run query with limit
 
@@ -65,11 +58,10 @@ while ($row = mysqli_fetch_array($query)) {  // preparing an array
 	$nestedData[] = $row["no_hp"];
 	$nestedData[] = $row["level"];
 	$nestedData[] = '<td><center>
-                     <a href="detail-admin.php?id=' . $row['user_id'] . '" style="color:#eee;"  data-toggle="tooltip" title="Edit" class="btn-floating waves-effect waves-light blue-grey"><i class="mdi-action-perm-identity"></i> </a>
-                     <a href="edit-admin.php?id=' . $row['user_id'] . '" style="color:#eee;"  data-toggle="tooltip" title="Edit" class="btn-floating waves-effect waves-light light-blue darken-3"><i class="mdi-editor-mode-edit"></i> </a>
-				     <a href="admin.php?aksi=delete&id=' . $row['user_id'] . '"  data-toggle="tooltip" title="Delete" onclick="return confirm(\'Anda yakin akan menghapus data ' . $row['fullname'] . '?\')" class="btn-floating waves-effect waves-light red"><i class="mdi-action-delete"></i> </a>
+                     <a href="detail-admin.php?id=' . $row['user_id'] . '" style="color:#eee;"  data-toggle="tooltip" title="Edit" class="btn btn-primary"><i class="mdi-action-perm-identity">Cek Edit</i> </a>
+                     <a href="edit-admin.php?id=' . $row['user_id'] . '" style="color:#eee;"  data-toggle="tooltip" title="Edit" class="btn btn-warning"><i class="mdi-editor-mode-edit">Edit</i> </a>
+				     <a href="admin.php?aksi=delete&id=' . $row['user_id'] . '"  data-toggle="tooltip" title="Delete" onclick="return confirm(\'Anda yakin akan menghapus data ' . $row['fullname'] . '?\')" class="btn btn-danger"><i class="mdi-action-delete">Delete</i> </a>
 	                 </center></td>';
-
 
 	//$nestedData[] = number_format($total,0,",",".");		
 

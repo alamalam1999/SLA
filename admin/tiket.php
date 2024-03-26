@@ -39,13 +39,11 @@ if (empty($_SESSION['username'])) {
 
             <!-- Main Content -->
             <div id="content">
-
                 <!-- START HEADER -->
                 <?php
                 include "header-tiket.php";
                 ?>
                 <!-- END HEADER -->
-
                 <div class="container-fluid">
 
                     <div id="breadcrumbs-wrapper" class=" grey lighten-3">

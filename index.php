@@ -29,8 +29,8 @@ include "head/head.php";
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     <a onclick="location.href='dashboard.php'" class="dropdown-item">User</a>
-                                    <a onclick="location.href='login.html'" class="dropdown-item">Admin</a>
-                                    <a onclick="location.href='login.html'" class="dropdown-item">Anything Else</a>
+                                    <a onclick="location.href='login.php'" class="dropdown-item">Admin</a>
+                                    <a onclick="location.href='login.php'" class="dropdown-item">Anything Else</a>
                                 </div>
                             </div>
                             <div class="mt-3">

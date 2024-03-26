@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    <script src="/tiket/dist/sweetalert-dev.js"></script>
+    <link rel="stylesheet" href="/tiket/dist/sweetalert.css">
+
 
     <title>SB Admin 2 - Dashboard</title>
 
