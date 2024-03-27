@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/tiket/dist/sweetalert.css">
 
 
-    <title>SB Admin 2 - Dashboard</title>
+    <title>SLA Service level Aggrement</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">

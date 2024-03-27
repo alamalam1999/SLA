@@ -2,7 +2,7 @@
  <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
      <!-- Sidebar - Brand -->
-     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
          <div class="sidebar-brand-icon rotate-n-15">
              <i class="fas fa-restroom"></i>
          </div>
@@ -67,12 +67,9 @@
              <div class="bg-white py-2 collapse-inner rounded">
                  <h6 class="collapse-header">User Screens:</h6>
                  <a class="collapse-item" href="admin.php">Data Admin</a>
-                 <a class="collapse-item" href="register.html">Register</a>
-                 <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
+                 <a class="collapse-item" href="input-admin.php">Register</a>
                  <div class="collapse-divider"></div>
-                 <h6 class="collapse-header">Other Pages:</h6>
-                 <a class="collapse-item" href="404.html">404 Page</a>
-                 <a class="collapse-item" href="blank.html">Blank Page</a>
+
              </div>
          </div>
      </li>
