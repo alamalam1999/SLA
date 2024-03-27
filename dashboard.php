@@ -6,9 +6,6 @@ include "head/head_dashboard.php";
 ?>
 
 <body class="text-center" style="background-image: url('image/rm380-14.jpg'); background-size: 1430px 1100px;">
-
-
-
     <?php
     include "conn.php";
 
