@@ -5,7 +5,7 @@
 include "head/head_dashboard.php";
 ?>
 
-<body class="text-center" style="background-image: url('image/rm380-14.jpg'); background-size: 1430px 1100px;">
+<body class="" style="background-image: url('image/rm380-14.jpg'); background-size: 1430px 1100px;">
     <?php
     include "conn.php";
 
@@ -133,7 +133,7 @@ include "head/head_dashboard.php";
 
                         
                         <div class="form-input mb-2">
-                            <strong><label class="cd-label" style="text-left">Nama</label></strong>
+                            <strong><label class="cd-label text-align-left">Nama</label></strong>
                             <input class="form-control" type="text" name="nama" id="nama" autocomplete="off" required="required">
                         </div>
 
@@ -175,17 +175,14 @@ include "head/head_dashboard.php";
 
                         <div class="mt-3">
                             <div class="row">
-                                <div class="col">
+                                <div class="col text-right">
                                     <input class=" btn btn-primary" type="submit" onclick="notifikasi()" name="input" id="input" value="Send Message">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col"></div>
                             </div>
-                            <div class="row">
-                                <div class="col">
-                                    <a href="datatiket.php">Data Ticket</a>
-                                </div>
+                            
                             </div>
 
                         </div>
