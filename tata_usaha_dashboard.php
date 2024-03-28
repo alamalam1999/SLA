@@ -112,9 +112,9 @@ include "head/head_dashboard.php";
             <div class="col">
                 <div>
                     <div class="row d-flex justify-content-center align-items-center h-100">
-                        <div class="col-md-9 col-lg-6 col-xl-8">
-                            <img src="image/gsuite1.png" class="img-fluid" alt="Sample image">
-                            <button onclick="location.href='https://sekolah-avicenna.sch.id/tiketgsuite/'" class="btn btn-lg btn-block btn-primary mb-2" style="font-size:13px; background-color: #15bee8;" type="submit"><strong> MASUK PELAYANAN G-SUITE SEKOLAH AVICENNA </strong> </button>
+                        <div class="col-md-9 col-lg-6 col-xl-8 mb-5">
+                            <img src="image/logo_baru.png" class="img-fluid" alt="Sample image">
+                            
                         </div>
                     </div>
                 </div>
@@ -122,65 +122,54 @@ include "head/head_dashboard.php";
 
 
                     <div class="h1 text-gray-800">
-                        <h1>Ticketing Helpdesk</h1>
+                        <h1></h1>
                     </div>
 
-                    <div class="h3 mb-0 text-gray-800"> Isi Ticket dengan baik agar jelas informasi permasalahan.</div>
-                    <div class="h3 mb-0 text-gray-800">Ticket diselesaikan oleh Tim Maintenance berdasarkan urutan antrian</div>
-                    <div class="h3 mb-0 text-gray-800">Ticket wajib di isi.</div>
 
                     <div class="container">
                         <input type="hidden" name="id_tiket" value="<?php echo date("dmYHis"); ?>" id="id_ticket" />
                         <input type="hidden" name="waktu" value="<?php echo date("d.m.Y.H.i.s"); ?>" id="waktu" />
                         <input type="hidden" name="tanggal" value="<?php echo date("Y-m-d"); ?>" id="tanggal" />
 
-                        <div class="input-group mb-3">
-                            <label class="cd-label">Nama Kendala</label>
-                            <input class="form-control" type="text" name="pc_no" id="pc_no" autocomplete="off" required="required">
-                        </div>
-
-                        <div class="input-group mb-3">
-                            <label class="cd-label">Nama</label>
+                        
+                        <div class="form-input mb-2">
+                            <strong><label class="cd-label" style="text-left">Nama</label></strong>
                             <input class="form-control" type="text" name="nama" id="nama" autocomplete="off" required="required">
                         </div>
 
-                        <div class="input-group mb-3">
-                            <label class="cd-label">Email</label>
+                        <div class="form-input mb-2">
+                            <strong><label class="cd-label left-text">Email</label></strong>
+                            <input class="form-control " type="email" name="email" id="email" autocomplete="off" required="email">
+                        </div>
+
+                        <div class="form-input mb-2">
+                            <strong><label class="cd-label text-left">Nomor Handphone</label></strong>
                             <input class="form-control " type="email" name="email" id="email" autocomplete="off" required="email">
                         </div>
 
 
-                        <div class="input-group mb-3">
-                            <label class="cd-label">Kendala</label>
-                            <select class="form-control " name="departemen" id="departemen" required>
+                        <div class="form-input mb-2">
+                            <strong><label class="cd-label">Kendala</label></strong>
+                            <select class="form-control " name="kendala_tatausaha" id="kendala_tatausaha" required>
                                 <option value=""></option>
-                                <option value="Research and Development">Research and Development</option>
-                                <option value="Human Resources">Human Resources</option>
-                                <option value="General Affair">General Affair</option>
-                                <option value="Accounting & Tax">Accounting & Tax</option>
-                                <option value="Finance">Finance</option>
-                                <option value="Building Maintenance">Building & Maintenance</option>
-                                <option value="Building Maintenance">Branding & Marketing</option>
-                                <option value="Transformasi Digital">Transformasi Digital (IT)</option>
-                                <option value="KB Avicenna Pamulang">KB Avicenna Pamulang</option>
-                                <option value="TK Avicenna Jagakarsa">TK Avicenna Jagakarsa</option>
-                                <option value="SD Avicenna Jagakarsa">SD Avicenna Jagakarsa</option>
-                                <option value="SMP Avicenna Jagakarsa">SMP Avicenna Jagakarsa</option>
-                                <option value="SMA Avicenna Jagakarsa">SMA Avicenna Jagakarsa</option>
-                                <option value="SD Avicenna Cinere">SD Avicenna Cinere</option>
-                                <option value="SMP Avicenna Cinere">SMP Avicenna Cinere</option>
-                                <option value="SMA Avicenna Cinere">SMA Avicenna Cinere</option>
+                                <option value=""></option>
+                                <option value=""></option>
+                                <option value=""></option>
+                                <option value=""></option>
+                                <option value=""></option>
+                                <option value=""></option>
+                
                             </select>
                         </div>
 
 
-                        <div class="input-group mb-3">
-                            <label class="cd-label"> Detail kendala</label>
+                        <div class="input-input mb-2">
+                            <strong><label class="cd-label"> Detail kendala</label></strong>
                             <textarea class="form-control " name="problem" id="problem" required></textarea>
                         </div>
 
-                        <div class="input-group mb-3">
-                            <label class="">Foto atau Screenshot masalah</label>
+                        <div class="input-input mb-2">
+                            <strong><label class="">Foto atau Screenshot masalah</label></strong>
                             <input name="choosefile" type="file" class="form-control " id="customFile" />
                         </div>
 
