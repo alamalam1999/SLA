@@ -19,3 +19,11 @@
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
+
+<!-- dont delete this for menu -->
+<?php
+include "../conn.php";
+include "permission.php";
+$test = new team();
+$group = "checkpermission";
+?>

@@ -5,7 +5,7 @@ if (session_status() === PHP_SESSION_NONE) {
 if (empty($_SESSION['username'])) {
     header('location:../index.php');
 } else {
-    include "../conn.php";
+
 ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -172,9 +172,13 @@ if (empty($_SESSION['username'])) {
                                             <!-- <a href="#" class="secondary-content"><i class="mdi-action-grade"></i></a>-->
                                         </li>
                                         <?php
+
+
                                         $tanggal = date("Y-m-d");
-                                        $query = "SELECT * FROM tiket WHERE status='new' limit 7";
-                                        $tampil = mysqli_query($koneksi, $query) or die(mysqli_error());
+                                        $query = "SELECT * FROM tiket WHERE status='new' and departemen in('" . implode("','", $test->$group()) . "') limit 7";
+                                        $tampil = mysqli_query($koneksi, $query);
+
+
                                         ?>
                                         <?php
                                         $no = 0;
@@ -203,7 +207,8 @@ if (empty($_SESSION['username'])) {
                                 </div>
                             </div>
                         </div>
-
+                        <div>
+                        </div>
                         <!-- Area Chart -->
                         <div class="col-xl-4 col-lg-4">
                             <div class="card shadow mb-4">

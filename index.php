@@ -29,14 +29,12 @@ include "head/head.php";
                                     Click Here
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a onclick="location.href='dashboard.php'" class="dropdown-item">Tata Usaha</a>
-                                    <a onclick="location.href='dashboard.php'" class="dropdown-item">Humas & PPDB</a>
-                                    <a onclick="location.href='dashboard.php'" class="dropdown-item">Kesiswaan</a>
-                                    <a onclick="location.href='dashboard.php'" class="dropdown-item">Kurikulum</a>
-                                    <a onclick="location.href='dashboard.php'" class="dropdown-item">Psikolog</a>
-                                    <a onclick="location.href='dashboard.php'" class="dropdown-item">BK</a>
-                                    <a onclick="location.href='login.html'" class="dropdown-item"></a>
-                                    <a onclick="location.href='login.html'" class="dropdown-item"></a>
+                                    <a onclick="location.href='tata_usaha_dashboard.php'" class="dropdown-item">Tata Usaha</a>
+                                    <a onclick="location.href='humas_ppdb_dashboard.php'" class="dropdown-item">Humas & PPDB</a>
+                                    <a onclick="location.href='kesiswaan_dashboard.php'" class="dropdown-item">Kesiswaan</a>
+                                    <a onclick="location.href='kurikulum_dashboard.php'" class="dropdown-item">Kurikulum</a>
+                                    <a onclick="location.href='psikolog_dashboard.php'" class="dropdown-item">Psikolog</a>
+                                    <a onclick="location.href='bk_dashboard.php'" class="dropdown-item">BK</a>
                                 </div>
                             </div>
                             <div class="mt-3">
