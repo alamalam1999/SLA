@@ -68,13 +68,13 @@ include "head/head_dashboard.php";
         if (!$sendmail->Send()) {
             echo "Email gagal dikirim : " . $sendmail->ErrorInfo;
         } else {
-            echo "Email berhasil terkirim!";
+            // echo "Email berhasil terkirim!";
 
 
             $cek = mysqli_query($koneksi, "SELECT * FROM tiket WHERE id_tiket='$id_tiket'");
-            echo "HASIL = " . mysqli_num_rows($cek);
+            // echo "HASIL = " . mysqli_num_rows($cek);
             if (mysqli_num_rows($cek) == 0) {
-                echo "masuk kesini";
+                // echo "masuk kesini";
                 $insert = mysqli_query($koneksi,  "INSERT INTO tiket(id_tiket,tanggal,waktu,pc_no,nama, email, departemen, problem ,penanganan, status, filename) 
                                                     VALUES('$id_tiket','$tanggal','$waktu','$pc_no','$nama','$email','$departemen','$problem','$none','$open','$filename')");
                 echo $insert;

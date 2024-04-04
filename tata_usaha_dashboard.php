@@ -70,11 +70,11 @@ include "head/head.php";
         if (!$sendmail->Send()) {
             echo "Email gagal dikirim : " . $sendmail->ErrorInfo;
         } else {
-            echo "Email berhasil terkirim!";
+            // echo "Email berhasil terkirim!";
             $cek = mysqli_query($koneksi, "SELECT * FROM tiket WHERE id_tiket='$id_tiket'");
-            echo "HASIL = " . mysqli_num_rows($cek);
+            // echo "HASIL = " . mysqli_num_rows($cek);
             if (mysqli_num_rows($cek) == 0) {
-                echo "masuk kesini";
+                // echo "masuk kesini";
                 $insert = mysqli_query($koneksi,  "INSERT INTO tiket(id_tiket,tanggal,waktu,pc_no,nama, email, departemen, problem ,penanganan, status, filename) 
                                                     VALUES('$id_tiket','$tanggal','$waktu','$pc_no','$nama','$email','$departemen','$problem','$none','$open','$filename')");
                 echo $insert;
@@ -222,31 +222,6 @@ include "head/head.php";
         $("#bodytemplate").css("background-image", "url('image/SLA-Image.jpg')");
         $("#bodytemplate").css("background-size", "auto auto");
         console.log(_img);
-        $(document).ready(function() {
-            if (Notification.permission !== "granted")
-                Notification.requestPermission();
-        });
-
-        function notifikasi() {
-            if (!Notification) {
-                alert('Browsermu tidak mendukung Web Notification.');
-                return;
-            }
-            if (Notification.permission !== "granted")
-                Notification.requestPermission();
-            else {
-                var notifikasi = new Notification('IT Helpdesk Tiket', {
-                    icon: 'img/logo.jpg',
-                    body: "Tiket Baru dari <?php echo $nama; ?>",
-                });
-                notifikasi.onclick = function() {
-                    window.open("http://tsuchiya-mfg.com");
-                };
-                setTimeout(function() {
-                    notifikasi.close();
-                }, 1000);
-            }
-        };
     </script>
 
 </body>
