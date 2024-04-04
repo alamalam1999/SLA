@@ -222,6 +222,31 @@ include "head/head.php";
         $("#bodytemplate").css("background-image", "url('image/SLA-Image.jpg')");
         $("#bodytemplate").css("background-size", "auto auto");
         console.log(_img);
+        $(document).ready(function() {
+            if (Notification.permission !== "granted")
+                Notification.requestPermission();
+        });
+
+        function notifikasi() {
+            if (!Notification) {
+                alert('Browsermu tidak mendukung Web Notification.');
+                return;
+            }
+            if (Notification.permission !== "granted")
+                Notification.requestPermission();
+            else {
+                var notifikasi = new Notification('IT Helpdesk Tiket', {
+                    icon: 'img/logo.jpg',
+                    body: "Tiket Baru dari <?php echo $nama; ?>",
+                });
+                notifikasi.onclick = function() {
+                    window.open("http://tsuchiya-mfg.com");
+                };
+                setTimeout(function() {
+                    notifikasi.close();
+                }, 1000);
+            }
+        };
     </script>
 
 </body>
