@@ -84,7 +84,7 @@
                      <h6 class="collapse-header">User Screens:</h6>
                      <a class="collapse-item" href="admin.php">Data Admin</a>
                      <a class="collapse-item" href="input-admin.php">Register</a>
-                     <a class="collapse-item" href="permission-dashboard.php">User Permission</a>
+                     <a class="collapse-item" href="permission_user_role.php">User Permission</a>
                      <div class="collapse-divider"></div>
 
                  </div>

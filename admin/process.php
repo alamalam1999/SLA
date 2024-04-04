@@ -2,7 +2,7 @@
 
 include "../conn.php";
 
-$kd = '11';
+$kd = $_SESSION['user_id'];
 $sql = mysqli_query($koneksi, "SELECT * FROM user WHERE user_id='$kd'");
 
 $row = mysqli_fetch_assoc($sql);

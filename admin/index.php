@@ -141,12 +141,9 @@ if (empty($_SESSION['username'])) {
                         </div>
                     </div>
 
-                    <!-- Content Row -->
                     <div class="row">
-                        <!-- Area Chart -->
-                        <div class="col-xl-4 col-lg-4">
+                        <div class="col">
                             <div class="card shadow mb-4">
-                                <!-- Card Header - Dropdown -->
                                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                     <h6 class="m-0 font-weight-bold text-primary">New Ticket Overview</h6>
                                     <div class="dropdown no-arrow">
@@ -207,12 +204,8 @@ if (empty($_SESSION['username'])) {
                                 </div>
                             </div>
                         </div>
-                        <div>
-                        </div>
-                        <!-- Area Chart -->
-                        <div class="col-xl-4 col-lg-4">
+                        <div class="col">
                             <div class="card shadow mb-4">
-                                <!-- Card Header - Dropdown -->
                                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                     <h6 class="m-0 font-weight-bold text-primary">Process Ticket</h6>
                                     <div class="dropdown no-arrow">
@@ -269,11 +262,8 @@ if (empty($_SESSION['username'])) {
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Pie Chart -->
-                        <div class="col-xl-4 col-lg-4">
+                        <div class="col">
                             <div class="card shadow mb-4">
-                                <!-- Card Header - Dropdown -->
                                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                     <h6 class="m-0 font-weight-bold text-primary">Ticket Complete</h6>
                                     <div class="dropdown no-arrow">
@@ -332,8 +322,6 @@ if (empty($_SESSION['username'])) {
                             </div>
                         </div>
                     </div>
-
-
 
                 </div>
                 <!-- /.container-fluid -->

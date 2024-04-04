@@ -36,77 +36,50 @@ if (empty($_SESSION['username'])) {
         <!-- END LEFT SIDEBAR NAV-->
         <!-- START CONTENT -->
         <div id="content-wrapper" class="d-flex flex-column">
+
             <div id="content">
                 <!-- START HEADER -->
                 <?php
                 include "header-tiket.php";
                 ?>
                 <div class="container-fluid">
-                    <div id="isi">
-                        <?php
-                        $id_check = "";
-                        if (isset($_POST['id_chek'])) {
-                            $id_check = $_POST['id_chek'];
-                        } elseif (isset($_GET['id_chek'])) {
-                            $id_check = $_GET['id_chek'];
-                        }
-                        ?>
-                        <h3>Id = <?php echo $id_check; ?></h3>
-                    </div>
                     <div class="card-body">
-                        <!-- <form action="process_save_rule.php" method="POST" enctype="multipart/form-data"> -->
                         <table class="table">
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Display</th>
-                                    <th scope="col">Code</th>
-                                    <th scope="col">Action</th>
+                                    <th scope="col">username</th>
+                                    <th scope="col">fullname</th>
+                                    <th scope="col">action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
                                 $no = 1;
-                                $tampil = mysqli_query($koneksi, "SELECT * FROM permissions");
+                                $tampil = mysqli_query($koneksi, "SELECT * FROM user");
+
                                 $count = mysqli_num_rows($tampil);
                                 while ($row = mysqli_fetch_array($tampil)) {
-                                    echo "<tr>";
-                                    echo "<input type='hidden' name='permission_" . $row['id'] . "' value='" . $row['id'] . "' >
-                                        <th scope='row'>" . $no++ . "</th>";
-                                    echo "<td>" . $row['display_name'] . "</td>";
-                                    echo "
-                                        <input type='hidden' name='id_" . $row['id'] . "' value='" . $row['id'] . "' >
-                                        <td>" . $row['name'] . "</td>";
-                                    $active = "";
-                                    $check_active = mysqli_query($koneksi, "SELECT * FROM permission_user where user_id = '" . $id_check . "' and permission_id = '" . $row['id'] . "'   ");
-                                    if ($check_active !== false) {
-                                        $glow = mysqli_fetch_assoc($check_active);
-                                        if ($glow !== null) {
-                                            $active = "warning";
-                                            $desc = "Active";
-                                        } else {
-                                            $active = "primary";
-                                            $desc = "Not Active";
-                                        }
-                                    }
-                                    echo "<td><form action='process_save_line.php' method='POST' enctype='multipart/form-data'>      
-                                    <div class='form-check form-switch'>
-                                    <input type='hidden' name='id_user' value='" .  $id_check . "'>
-                                    <input type='hidden' name='check_line' value='" . $row['id'] . "'>
-                                    <button class='btn btn-$active ' id=''>" . $desc . "</button>
-                                    </form></div></td>";
-                                    echo "</tr>";
+                                    echo "<tr>
+                                    <form action='permission-dashboard.php' method='POST' enctype='multipart/form-data'>";
+                                    echo "<th scope='row'>" . $no++ . "</th>";
+                                    echo "<td>" . $row['username'] . "</td>";
+                                    echo "<td>" . $row['fullname'] . "</td>";
+                                    echo "<td>   
+                                            <button type='submit' name='id_chek' value='" . $row['user_id'] . "'>Check</button>
+                                          </td>";
+                                    echo "</form>
+                                    </tr>";
                                 }
                                 // $total = mysqli_num_rows($tampil);
                                 ?>
+
                             </tbody>
+
+
                         </table>
-                        <div>
-                            <input type="hidden" name="count" value="<?php echo $count ?>">
-                            <button type="submit">Centang Semua</button>
-                        </div>
-                        <!-- </form> -->
                     </div>
+
                 </div>
 
             </div>
@@ -177,6 +150,7 @@ if (empty($_SESSION['username'])) {
 
                     var jsonObjectcheck = JSON.parse(data);
 
+                    alert(jsonObjectcheck.user_id);
                 },
                 error: function(xhr, status, error) {
                     console.error(xhr);

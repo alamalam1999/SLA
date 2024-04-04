@@ -2,29 +2,31 @@
 <html lang="en">
 
 <?php
-include "head/head_dashboard.php";
+include "head/head.php";
 ?>
 
-<body class="text-center" style="background-image: url('image/rm380-14.jpg'); background-size: 1430px 1100px;">
+<body id="bodytemplate" class="bg-gradient-primary">
     <?php
     include "conn.php";
 
     if (isset($_POST['input'])) {
 
         $id_tiket  = $_POST['id_tiket'];
+        $kendala_tata_usaha = $_POST['departemen']; //done
         $waktu     = $_POST['waktu'];
+        $pc_no     = "KOSONG";
         $tanggal   = $_POST['tanggal'];
-        $pc_no     = $_POST['pc_no'];
-        $nama      = $_POST['nama'];
-        $email     = $_POST['email'];
+        $no_hp     = $_POST['no_hp']; //done
+        $nama      = $_POST['nama']; //done
+        $email     = $_POST['email']; //done
         $departemen = $_POST['departemen'];
-        $problem   = $_POST['problem'];
-        $filename  = $_FILES["choosefile"]["name"];
-        $tempname  = $_FILES["choosefile"]["tmp_name"];
+        $problem   = $_POST['problem']; //done
+        $filename  = $_FILES["choosefile"]["name"]; //done
+        $tempname  = $_FILES["choosefile"]["tmp_name"]; //done
         $none      = "";
         $open      = "new";
 
-        $folder = "image/" . $filename;
+        $folder = "" . $filename;
 
         $laporan = "<h4><b>Tiket Baru : $waktu</b></h4>";
         $laporan .= "<br/>";
@@ -69,8 +71,6 @@ include "head/head_dashboard.php";
             echo "Email gagal dikirim : " . $sendmail->ErrorInfo;
         } else {
             echo "Email berhasil terkirim!";
-
-
             $cek = mysqli_query($koneksi, "SELECT * FROM tiket WHERE id_tiket='$id_tiket'");
             echo "HASIL = " . mysqli_num_rows($cek);
             if (mysqli_num_rows($cek) == 0) {
@@ -79,6 +79,8 @@ include "head/head_dashboard.php";
                                                     VALUES('$id_tiket','$tanggal','$waktu','$pc_no','$nama','$email','$departemen','$problem','$none','$open','$filename')");
                 echo $insert;
                 if ($insert) {
+
+                    echo $tempname;
                     move_uploaded_file($tempname, $folder);
                     echo '<script>sweetAlert({
 	                                                   title: "Keluhan berhasil dikirim!", 
@@ -103,144 +105,125 @@ include "head/head_dashboard.php";
     }
     ?>
 
+    <div class="container">
+        <!-- Outer Row -->
+        <div class="row justify-content-center">
+            <div class="col-xl-5 col-lg-12 col-md-9">
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+                        <!-- Nested Row within Card Body -->
+                        <div class="row">
+                            <div class="col">
+                                <div class="p-5">
+                                    <form method="POST" enctype="multipart/form-data" action="tata_usaha_dashboard.php">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="">
+                                                    <img src="image/logo_baru.png" class="img-fluid" alt="Sample image">
+                                                    <div class="h1 text-gray-800">
+                                                        <h1></h1>
+                                                    </div>
+                                                    <div class="container">
+                                                        <input type="hidden" name="id_tiket" value="<?php echo date("dmYHis"); ?>" id="id_ticket" />
+                                                        <input type="hidden" name="waktu" value="<?php echo date("d.m.Y.H.i.s"); ?>" id="waktu" />
+                                                        <input type="hidden" name="tanggal" value="<?php echo date("Y-m-d"); ?>" id="tanggal" />
+                                                        <input type="hidden" name="departemen" value="kurikulum" id="departemen" />
 
+                                                        <div class="form-input mb-2">
+                                                            <strong><label class="cd-label left-text">Nama</label></strong>
+                                                            <input class="form-control" type="text" name="nama" id="nama" autocomplete="off" required>
+                                                        </div>
 
+                                                        <div class="form-input mb-2">
+                                                            <strong><label class="cd-label left-text">Email</label></strong>
+                                                            <input class="form-control " type="email" name="email" id="email" autocomplete="off" required>
+                                                        </div>
 
-    <form method="POST" enctype="multipart/form-data" action="dashboard.php">
-        <div class="row">
-            <div class="col"></div>
-            <div class="col">
-                <div>
-                    <div class="row d-flex justify-content-center align-items-center h-100">
-                        <div class="col-md-9 col-lg-6 col-xl-8">
-                            <img src="image/gsuite1.png" class="img-fluid" alt="Sample image">
-                            <button onclick="location.href='https://sekolah-avicenna.sch.id/tiketgsuite/'" class="btn btn-lg btn-block btn-primary mb-2" style="font-size:13px; background-color: #15bee8;" type="submit"><strong> MASUK PELAYANAN G-SUITE SEKOLAH AVICENNA </strong> </button>
+                                                        <div class="form-input mb-2">
+                                                            <strong><label class="cd-label text-left">Nomor Handphone</label></strong>
+                                                            <input class="form-control " type="no_hp" name="no_hp" id="no_hp" autocomplete="off" required>
+                                                        </div>
+
+                                                        <div class="form-input mb-2">
+                                                            <strong><label class="cd-label">Kendala</label></strong>
+                                                            <select class="form-control " name="kendala_tatausaha" id="kendala_tatausaha" required>
+                                                                <option value="" selected>Pilih</option>
+                                                                <option value="Test 1">Test 1</option>
+                                                                <option value="Test 2">Test 2</option>
+                                                                <option value="Test 3">Test 3</option>
+                                                                <option value="Test 4">Test 4</option>
+                                                                <option value="Test 5">Test 5</option>
+                                                                <option value="Test 6">Test 6</option>
+                                                                <option value="Test 7">Test 7</option>
+                                                            </select>
+                                                        </div>
+
+                                                        <div class="input-input mb-2">
+                                                            <strong><label class="cd-label text-left">Detail kendala</label></strong>
+                                                            <textarea class="form-control " name="problem" id="problem" required></textarea>
+                                                        </div>
+
+                                                        <div class="input-input mb-2">
+                                                            <strong><label class="">Foto atau Screenshot masalah</label></strong>
+                                                            <input name="choosefile" type="file" class="form-control " id="customFile" />
+                                                        </div>
+
+                                                        <div class="mt-3 text-center">
+                                                            <div class="row">
+                                                                <div class="col">
+                                                                    <input class=" btn btn-primary" type="submit" onclick="notifikasi()" name="input" id="input" value="Send Message">
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col"></div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col">
+                                                                    <a href="datatiket.php">Data Ticket</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <hr>
+                                    <div class="text-center">
+                                        <!-- <a class="small" href="forgot-password.html">Forgot Password?</a> -->
+                                    </div>
+                                    <div class="text-center">
+                                        <!-- <a class="small" href="register.html">Create an Account!</a> -->
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <fieldset>
-
-
-                    <div class="h1 text-gray-800">
-                        <h1>Ticketing Helpdesk</h1>
-                    </div>
-
-                    <div class="h3 mb-0 text-gray-800"> Isi Ticket dengan baik agar jelas informasi permasalahan.</div>
-                    <div class="h3 mb-0 text-gray-800">Ticket diselesaikan oleh Tim Maintenance berdasarkan urutan antrian</div>
-                    <div class="h3 mb-0 text-gray-800">Ticket wajib di isi.</div>
-
-                    <div class="container">
-                        <input type="hidden" name="id_tiket" value="<?php echo date("dmYHis"); ?>" id="id_ticket" />
-                        <input type="hidden" name="waktu" value="<?php echo date("d.m.Y.H.i.s"); ?>" id="waktu" />
-                        <input type="hidden" name="tanggal" value="<?php echo date("Y-m-d"); ?>" id="tanggal" />
-
-                        <div class="input-group mb-3">
-                            <label class="cd-label">Nama Kendala</label>
-                            <input class="form-control" type="text" name="pc_no" id="pc_no" autocomplete="off" required="required">
-                        </div>
-
-                        <div class="input-group mb-3">
-                            <label class="cd-label">Nama</label>
-                            <input class="form-control" type="text" name="nama" id="nama" autocomplete="off" required="required">
-                        </div>
-
-                        <div class="input-group mb-3">
-                            <label class="cd-label">Email</label>
-                            <input class="form-control " type="email" name="email" id="email" autocomplete="off" required="email">
-                        </div>
-
-
-                        <div class="input-group mb-3">
-                            <label class="cd-label">Kendala</label>
-                            <select class="form-control " name="departemen" id="departemen" required>
-                                <option value=""></option>
-                                <option value="Research and Development">Research and Development</option>
-                                <option value="Human Resources">Human Resources</option>
-                                <option value="General Affair">General Affair</option>
-                                <option value="Accounting & Tax">Accounting & Tax</option>
-                                <option value="Finance">Finance</option>
-                                <option value="Building Maintenance">Building & Maintenance</option>
-                                <option value="Building Maintenance">Branding & Marketing</option>
-                                <option value="Transformasi Digital">Transformasi Digital (IT)</option>
-                                <option value="KB Avicenna Pamulang">KB Avicenna Pamulang</option>
-                                <option value="TK Avicenna Jagakarsa">TK Avicenna Jagakarsa</option>
-                                <option value="SD Avicenna Jagakarsa">SD Avicenna Jagakarsa</option>
-                                <option value="SMP Avicenna Jagakarsa">SMP Avicenna Jagakarsa</option>
-                                <option value="SMA Avicenna Jagakarsa">SMA Avicenna Jagakarsa</option>
-                                <option value="SD Avicenna Cinere">SD Avicenna Cinere</option>
-                                <option value="SMP Avicenna Cinere">SMP Avicenna Cinere</option>
-                                <option value="SMA Avicenna Cinere">SMA Avicenna Cinere</option>
-                            </select>
-                        </div>
-
-
-                        <div class="input-group mb-3">
-                            <label class="cd-label"> Detail kendala</label>
-                            <textarea class="form-control " name="problem" id="problem" required></textarea>
-                        </div>
-
-                        <div class="input-group mb-3">
-                            <label class="">Foto atau Screenshot masalah</label>
-                            <input name="choosefile" type="file" class="form-control " id="customFile" />
-                        </div>
-
-                        <div class="mt-3">
-                            <div class="row">
-                                <div class="col">
-                                    <input class=" btn btn-primary" type="submit" onclick="notifikasi()" name="input" id="input" value="Send Message">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col"></div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <a href="datatiket.php">Data Ticket</a>
-                                </div>
-                            </div>
-
-                        </div>
-                </fieldset>
 
             </div>
-            <div class="col"></div>
+
         </div>
-    </form>
-    <center style="font-size:18px">Copyright &copy; <a href="#">2022 Transformasi Digital- BPS YPAP</a></center><br /><br />
-    <script src="js/main.js"></script> <!-- Resource jQuery -->
 
-    <!-- <script>
-  sweetAlert("Hello world!");
-  </script> -->
+    </div>
 
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
 
     <script>
-        $(document).ready(function() {
-            if (Notification.permission !== "granted")
-                Notification.requestPermission();
-        });
-
-        function notifikasi() {
-            if (!Notification) {
-                alert('Browsermu tidak mendukung Web Notification.');
-                return;
-            }
-            if (Notification.permission !== "granted")
-                Notification.requestPermission();
-            else {
-                var notifikasi = new Notification('IT Helpdesk Tiket', {
-                    icon: 'img/logo.jpg',
-                    body: "Tiket Baru dari <?php echo $nama; ?>",
-                });
-                notifikasi.onclick = function() {
-                    window.open("http://tsuchiya-mfg.com");
-                };
-                setTimeout(function() {
-                    notifikasi.close();
-                }, 1000);
-            }
-        };
+        var _img = document.getElementById('bodytemplate');
+        $("#bodytemplate").css("background-image", "url('image/SLA-Image.jpg')");
+        $("#bodytemplate").css("background-size", "auto auto");
+        console.log(_img);
     </script>
+
 </body>
 
 </html>
