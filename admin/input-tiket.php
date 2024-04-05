@@ -109,8 +109,8 @@ if (empty($_SESSION['username'])) {
             require_once("phpmailer/class.smtp.php");
 
             $sendmail = new PHPMailer();
-            $sendmail->setFrom('hakko@tsuchiya-mfg.co.id', 'IT Helpdesk Tiket'); //email pengirim
-            $sendmail->addReplyTo('hakko@tsuchiya-mfg.co.id', 'Hakko Bio Richard'); //email replay
+            $sendmail->setFrom('adialamalam@gmail.com', 'IT Helpdesk Tiket'); //email pengirim
+            $sendmail->addReplyTo('adialamalam@gmail.com', 'adi alam'); //email replay
             $sendmail->addAddress("$email", "$nama"); //email tujuan
             //$sendmail->AddBCC("$email");
             $sendmail->Subject = "Tiket IT Helpdesk $id_tiket"; //subjek email

@@ -35,7 +35,7 @@
                  <div class="bg-white py-2 collapse-inner rounded">
                      <h6 class="collapse-header">Select the Tab:</h6>
                      <a class="collapse-item" href="index.php">Data Tiket</a>
-                     <a class="collapse-item" href="index-gsuite.php">Data Tiket G-Suite</a>
+                     <!-- <a class="collapse-item" href="index-gsuite.php">Data Tiket G-Suite</a> -->
                  </div>
              </div>
          <?php
@@ -52,7 +52,7 @@
              <div class="bg-white py-2 collapse-inner rounded">
                  <h6 class="collapse-header">Select the Tab:</h6>
                  <a class="collapse-item" href="tiket.php">Data Tiket</a>
-                 <a class="collapse-item" href="tiketgsuite.php">Data Tiket G-suite</a>
+                 <!-- <a class="collapse-item" href="tiketgsuite.php">Data Tiket G-suite</a> -->
              </div>
          </div>
      </li>

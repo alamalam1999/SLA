@@ -42,9 +42,7 @@ CREATE TABLE `pc` (
   `status` varchar(30) NOT NULL,
   `ket` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 -- --------------------------------------------------------
-
 --
 -- Table structure for table `tiket`
 --
@@ -74,8 +72,6 @@ INSERT INTO `tiket` (`id_tiket`, `tanggal`, `pc_no`, `nama`, `email`, `departeme
 ('06062017060739', '2017-06-06', 'sasas', 'asas', '', 'Printing', 'sasasa', '', 'open'),
 ('06062017060930', '2017-06-06', '212121', 'fsgsgds', '', 'QC', 'vZVsdgasdga', '', 'open'),
 ('06062017060938', '2017-06-06', 'ewew', 'ewew', '', 'HRD & GA', 'ewewewe', '', 'open'),
-('06062017080400', '2017-06-06', '21', 'hakko bio richard', '', 'HRD & GA', 'wwqwqwqwqwqwqwqwqwqw', '', 'open'),
-('06062017080700', '2017-06-06', '32323', 'Hakko Bio Richard', '', 'HRD & GA', 'sasasas', '', 'open'),
 ('06062017080906', '2017-06-06', '2121', '2121', '', 'HRD & GA', '212121', '', 'open'),
 ('06062017080918', '2017-06-06', 'wwewe', 'eweewe', '', 'HRD & GA', 'fdfdfdfd', '', 'open'),
 ('06062017081136', '2017-06-06', 'ere', 'erer', '', 'HRD & GA', 'rerer', '', 'open'),
@@ -113,8 +109,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `username`, `password`, `fullname`, `no_hp`, `level`, `gambar`) VALUES
-(1, 'Tsuch1y4', 'tsuch1y4', 'Administrator', 2147483647, 'Admin', 'gambar_admin/Tulips.jpg'),
-(2, 'hakko', 'hakko', 'Hakko Bio Richard', 2147483647, 'User', 'gambar_admin/Chrysanthemum.jpg');
+(1, 'Tsuch1y4', 'tsuch1y4', 'Administrator', 2147483647, 'Admin', 'gambar_admin/Tulips.jpg');
 
 --
 -- Indexes for dumped tables
