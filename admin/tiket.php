@@ -46,53 +46,58 @@ if (empty($_SESSION['username'])) {
                 <!-- END HEADER -->
                 <div class="container-fluid">
 
-                    <div id="breadcrumbs-wrapper" class=" grey lighten-3">
-
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col s12 m12 l12">
-                                    <h5 class="breadcrumbs-title">Helpdesk G-Suite</h5>
-                                    <ol class="breadcrumb">
-                                        <li><a href="index.php">Dashboard</a></li>
-                                        <li><a href="tiket.php">Tiket</a></li>
-                                    </ol>
-                                </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col s12 m12 l12">
+                                <h5 class="breadcrumbs-title">Helpdesk G-Suite</h5>
+                                <ol class="breadcrumb">
+                                    <li><a href="index.php">Dashboard</a></li>
+                                    <li><a href="tiket.php">Tiket</a></li>
+                                </ol>
                             </div>
-                            <!--DataTables example-->
-                            <?php
-                            if (isset($_GET['aksi']) == 'delete') {
-                                $id = $_GET['id'];
-                                $cek = mysqli_query($koneksi, "SELECT * FROM tiket WHERE id_tiket='$id'");
-                                if (mysqli_num_rows($cek) == 0) {
-                                    echo '<script>sweetAlert({
+                        </div>
+                        <!--DataTables example-->
+                        <?php
+                        if (isset($_GET['aksi']) == 'delete') {
+                            $id = $_GET['id'];
+                            $cek = mysqli_query($koneksi, "SELECT * FROM tiket WHERE id_tiket='$id'");
+                            if (mysqli_num_rows($cek) == 0) {
+                                echo '<script>sweetAlert({
                                    title: "Ups!", 
                                     text: "Data tiket tidak ditemukan!", 
                                     type: "error"
                                     });</script>';
-                                } else {
-                                    $delete = mysqli_query($koneksi, "DELETE FROM tiket WHERE id_tiket='$id'");
-                                    if ($delete) {
-                                        echo '<script>sweetAlert({
+                            } else {
+                                $delete = mysqli_query($koneksi, "DELETE FROM tiket WHERE id_tiket='$id'");
+                                if ($delete) {
+                                    echo '<script>sweetAlert({
                                    title: "Berhasil!", 
                                     text: "Data Berhasil di hapus!", 
                                     type: "success"
                                     });</script>';
-                                    } else {
-                                        echo '<script>sweetAlert({
+                                } else {
+                                    echo '<script>sweetAlert({
                                    title: "Gagal!", 
                                     text: "Data gagal di hapus!", 
                                     type: "error"
                                     });</script>';
-                                    }
                                 }
                             }
-                            ?>
-                            <div id="table-datatables">
-                                <!-- <a href="input-tiket.php" class="btn-floating btn-small waves-effect waves-light green darken-2" title="Tambah Tiket"><i class="mdi-content-add"></i></a>-->
-                                <a href="tiket-export-xls.php" class="btn btn-primary mb-3" title="Export Excel"><i class="mdi-content-content-copy">Export</i></a>
-                                <div class="row">
-                                    <div class="col s12 m12">
-                                        <table id="lookup" class="table" style="width:auto">
+                        }
+                        ?>
+                        <!-- <a href="input-tiket.php" class="btn-floating btn-small waves-effect waves-light green darken-2" title="Tambah Tiket"><i class="mdi-content-add"></i></a>-->
+                        <a href="tiket-export-xls.php" class="btn btn-primary mb-3" title="Export Excel"><i class="mdi-content-content-copy">Export</i></a>
+
+                        <div class="card-body">
+
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                                </div>
+                                <div class="card-body">
+
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered" id="lookup" width="100%" cellspacing="0">
                                             <thead>
                                                 <tr>
                                                     <th>Id Tiket</th>
@@ -118,7 +123,6 @@ if (empty($_SESSION['username'])) {
                     <!-- Breadcrumbs -->
                 </div>
             </div>
-            <!-- END CONTENT -->
             <!-- START FOOTER -->
             <?php include "footer-menu.php"; ?>
             <!-- END FOOTER -->
@@ -151,23 +155,6 @@ if (empty($_SESSION['username'])) {
             </div>
         </div>
 
-        <!-- Bootstrap core JavaScript-->
-        <script src="vendor/jquery/jquery.min.js"></script>
-        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-        <!-- Core plugin JavaScript-->
-        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-        <!-- Custom scripts for all pages-->
-        <script src="js/sb-admin-2.min.js"></script>
-
-        <!-- Page level plugins -->
-        <script src="vendor/chart.js/Chart.min.js"></script>
-
-        <!-- Page level custom scripts -->
-        <script src="js/demo/chart-area-demo.js"></script>
-        <script src="js/demo/chart-pie-demo.js"></script>
-
         <!-- jQuery Library -->
         <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
         <!--materialize js-->
@@ -185,24 +172,31 @@ if (empty($_SESSION['username'])) {
         <!--plugins.js - Some Specific JS codes for Plugin Settings-->
         <script type="text/javascript" src="js/plugins.js"></script>
 
+        <!-- Bootstrap core JavaScript-->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+        <!-- Core plugin JavaScript-->
+        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+        <!-- Custom scripts for all pages-->
+        <script src="js/sb-admin-2.min.js"></script>
+
+        <!-- Page level plugins -->
+        <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+        <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+
         <script>
             $(document).ready(function() {
-                var dataTable = $('#lookup').DataTable({
-                    "autoWidth": false,
-                    "columnDefs": [{
-                        "width": "20%",
-                        "targets": 0
-                    }],
+                $('#lookup').DataTable({
                     "processing": true,
                     "serverSide": true,
                     "ajax": {
                         url: "ajax-grid-data1.php", // json datasource
                         type: "post", // method  , by default get
                         error: function() { // error handling
-                            $(".lookup-error").html("");
                             $("#lookup").append('<tbody class="employee-grid-error"><tr><th colspan="3">No data found in the server</th></tr></tbody>');
-                            $("#lookup_processing").css("display", "none");
-
                         }
                     }
                 });

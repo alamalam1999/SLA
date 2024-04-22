@@ -36,55 +36,37 @@ if (empty($_SESSION['username'])) {
         <!-- END LEFT SIDEBAR NAV-->
         <!-- START CONTENT -->
         <div id="content-wrapper" class="d-flex flex-column">
-
             <div id="content">
                 <!-- START HEADER -->
                 <?php
                 include "header-tiket.php";
                 ?>
                 <div class="container-fluid">
-                    <div class="card-body">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">username</th>
-                                    <th scope="col">fullname</th>
-                                    <th scope="col">action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                $no = 1;
-                                $tampil = mysqli_query($koneksi, "SELECT * FROM user");
+                    <!-- START HEADER -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                        </div>
+                        <div class="card-body">
 
-                                $count = mysqli_num_rows($tampil);
-                                while ($row = mysqli_fetch_array($tampil)) {
-                                    echo "<tr>
-                                    <form action='permission-dashboard.php' method='POST' enctype='multipart/form-data'>";
-                                    echo "<th scope='row'>" . $no++ . "</th>";
-                                    echo "<td>" . $row['username'] . "</td>";
-                                    echo "<td>" . $row['fullname'] . "</td>";
-                                    echo "<td>   
-                                            <button type='submit' name='id_chek' value='" . $row['user_id'] . "'>Check</button>
-                                          </td>";
-                                    echo "</form>
-                                    </tr>";
-                                }
-                                // $total = mysqli_num_rows($tampil);
-                                ?>
-
-                            </tbody>
-
-
-                        </table>
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="lookup" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">username</th>
+                                            <th scope="col">fullname</th>
+                                            <th scope="col">action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
-
                 </div>
-
+                <!-- END MAIN -->
             </div>
-            <!-- END MAIN -->
-
             <!-- START FOOTER -->
             <?php include "footer-menu.php"; ?>
             <!-- END FOOTER -->
@@ -115,6 +97,23 @@ if (empty($_SESSION['username'])) {
             </div>
         </div>
 
+        <!-- jQuery Library -->
+        <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+        <!--materialize js-->
+        <script type="text/javascript" src="js/materialize.js"></script>
+        <!--prism-->
+        <script type="text/javascript" src="js/prism.js"></script>
+        <!--scrollbar-->
+        <script type="text/javascript" src="js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+        <!-- data-tables -->
+        <script type="text/javascript" src="js/plugins/data-tables/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="js/plugins/data-tables/data-tables-script.js"></script>
+        <!-- chartist -->
+        <script type="text/javascript" src="js/plugins/chartist-js/chartist.min.js"></script>
+
+        <!--plugins.js - Some Specific JS codes for Plugin Settings-->
+        <script type="text/javascript" src="js/plugins.js"></script>
+
         <!-- Bootstrap core JavaScript-->
         <script src="vendor/jquery/jquery.min.js"></script>
         <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -126,35 +125,22 @@ if (empty($_SESSION['username'])) {
         <script src="js/sb-admin-2.min.js"></script>
 
         <!-- Page level plugins -->
-        <script src="vendor/chart.js/Chart.min.js"></script>
-
-        <!-- Page level custom scripts -->
-        <script src="js/demo/chart-area-demo.js"></script>
-        <script src="js/demo/chart-pie-demo.js"></script>
-
-        <!-- sparkline -->
-        <script type="text/javascript" src="js/plugins/sparkline/jquery.sparkline.min.js"></script>
-        <script type="text/javascript" src="js/plugins/sparkline/sparkline-script.js"></script>
+        <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+        <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
         <script>
-            var mohonid = $('#check_value').val();
-
-            $.ajax({
-                type: "POST",
-                url: "process_permission.php",
-                data: {
-                    mohonid: mohonid
-                },
-                cache: false,
-                success: function(data) {
-
-                    var jsonObjectcheck = JSON.parse(data);
-
-                    alert(jsonObjectcheck.user_id);
-                },
-                error: function(xhr, status, error) {
-                    console.error(xhr);
-                }
+            $(document).ready(function() {
+                $('#lookup').DataTable({
+                    "processing": true,
+                    "serverSide": true,
+                    "ajax": {
+                        url: "ajax-grid-data3.php", // json datasource
+                        type: "post", // method  , by default get
+                        error: function() { // error handling
+                            $("#lookup").append('<tbody class="employee-grid-error"><tr><th colspan="3">No data found in the server</th></tr></tbody>');
+                        }
+                    }
+                });
             });
         </script>
     </body>

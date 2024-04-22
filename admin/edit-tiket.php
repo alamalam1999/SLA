@@ -174,8 +174,8 @@ if (empty($_SESSION['username'])) {
                       <textarea class="form-control" id="problem" name="problem" class="materialize-textarea validate" length="120" readonly="readonly"><?php echo $row['problem']; ?></textarea>
                       <label for="Problem">Problem</label>
 
-                      <a href="/tiket/image/<?php echo $row['filename']; ?>" style="color:#eee; text-align: center;" data-toggle="tooltip" title="Edit" class="btn btn-primary">view</a><label for="Problem">View</label>
-                      <label for="Departemen">View</label>
+                      <a href="/tiket/image/<?php echo $row['filename']; ?>" style="color:#eee; text-align: center;" data-toggle="tooltip" title="Edit" class="btn btn-primary">view</a>
+
 
 
                       <textarea class="form-control" id="penanganan" name="penanganan" class="materialize-textarea validate" length="120"></textarea>

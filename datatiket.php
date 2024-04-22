@@ -27,27 +27,25 @@
     <center>Data Ticket IT Helpdesk System</center>
   </h3>
   <div class="col-lg-12" style="margin-top: 40px;">
-    <table id="lookup" class="table table-bordered table-hover">
-      <thead bgcolor="eeeeee" align="center">
-        <tr>
 
-          <th>Id Tiket</th>
-          <th>Tanggal</th>
-          <th>Nama Barang</th>
-          <th>Nama</th>
-          <th>Departemen</th>
-          <th>Permasalahan</th>
-          <th>Status</th>
-          <th>Pic</th>
-          <th>Penanganan</th>
+    <div class="mb-4">
+      <form id="myForm">
+        <div class="mb-3">
+          <label for="exampleInputIdTiket1" class="form-label">Id Tiket</label>
+          <input type="text" name="idtiket" class="form-control" id="id_tiket">
+          <div id="IdTiketlHelp" class="form-text">We'll never share your Id Tiket with anyone else.</div>
+        </div>
 
-        </tr>
-      </thead>
-      <tbody>
-
-
-      </tbody>
-    </table>
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+          <label class="form-check-label" for="exampleCheck1">Paksa</label>
+        </div>
+        <!-- <button name="input" type="submit" class="btn btn-primary">Submit</button> -->
+        <input class="btn btn-primary" type="submit" name="input" id="input">
+      </form>
+    </div>
+    <div id="result">
+    </div>
   </div>
   <center><a href="index.php">Kembali</a></center>
 
@@ -58,21 +56,36 @@
   <script type="text/javascript" src="dist/js/bootstrap.min.js"></script>
 
 
+
   <script>
     $(document).ready(function() {
-      var dataTable = $('#lookup').DataTable({
-        "processing": true,
-        "serverSide": true,
-        "ajax": {
-          url: "ajax-grid-data.php", // json datasource
-          type: "post", // method  , by default get
-          error: function() { // error handling
-            $(".lookup-error").html("");
-            $("#lookup").append('<tbody class="employee-grid-error"><tr><th colspan="3">No data found in the server</th></tr></tbody>');
-            $("#lookup_processing").css("display", "none");
 
+      $('#myForm').submit(function(event) {
+        event.preventDefault();
+        var id_tiket = $('#id_tiket').val();
+        $.ajax({
+          type: "GET",
+          url: "search.php",
+          data: {
+            id_tiket: id_tiket,
+          },
+          dataType: "json",
+          success: function(data) {
+            $('#result').html(
+              '<div class="card card-body text-center"><p>Name: ' + data.nama + '</p>' +
+              '<p>Email: ' + data.email + '</p>' +
+              '<p>Department: ' + data.departemen + '</p>' +
+              '<p>Problem: ' + data.problem + '</p>' +
+              '<p>Date: ' + data.tanggal + '</p>' +
+              '<p>Status: ' + data.status + '</p>' +
+              '<p>Time: ' + data.waktu + '</p>' +
+              '<p>PIC: ' + data.pic + '</p></div>'
+            );
+          },
+          error: function(xhr, status, error) {
+            console.error(xhr.responseText);
           }
-        }
+        });
       });
     });
   </script>
