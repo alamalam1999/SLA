@@ -200,7 +200,7 @@ if (empty($_SESSION['username'])) {
         $('#fullname').val(jsonObjectcheck.fullname);
         $("#level").val(jsonObjectcheck.level).text(jsonObjectcheck.level);
         $('#no_hp').val(jsonObjectcheck.no_hp);
-        alert('hello');
+
       }
     });
   </script>

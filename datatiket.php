@@ -35,11 +35,11 @@
           <input type="text" name="idtiket" class="form-control" id="id_tiket">
           <div id="IdTiketlHelp" class="form-text">We'll never share your Id Tiket with anyone else.</div>
         </div>
-
+        <!-- 
         <div class="mb-3 form-check">
           <input type="checkbox" class="form-check-input" id="exampleCheck1">
           <label class="form-check-label" for="exampleCheck1">Paksa</label>
-        </div>
+        </div> -->
         <!-- <button name="input" type="submit" class="btn btn-primary">Submit</button> -->
         <input class="btn btn-primary" type="submit" name="input" id="input">
       </form>
