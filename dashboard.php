@@ -131,7 +131,7 @@ include "head/head_dashboard.php";
 
                     <div class="container">
                         <input type="hidden" name="id_tiket" value="<?php echo date("dmYHis"); ?>" id="id_ticket" />
-                        <input type="hidden" name="waktu" value="<?php echo date("d.m.Y.H.i.s"); ?>" id="waktu" />
+                        <input type="hidden" name="waktu" value="<?php echo date("dmYHis"); ?>" id="waktu" />
                         <input type="hidden" name="tanggal" value="<?php echo date("Y-m-d"); ?>" id="tanggal" />
 
                         <div class="input-group mb-3">

@@ -172,7 +172,7 @@ if (empty($_SESSION['username'])) {
 
 
                                         $tanggal = date("Y-m-d");
-                                        $query = "SELECT * FROM tiket WHERE status='new' and departemen in('" . implode("','", $test->$group()) . "') limit 7";
+                                        $query = "SELECT * FROM tiket WHERE status='new' and departemen in('" . implode("','", $test->$group()) . "') ORDER BY tanggal DESC limit 7";
                                         $tampil = mysqli_query($koneksi, $query);
 
 
