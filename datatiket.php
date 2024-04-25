@@ -23,17 +23,17 @@
 </head>
 
 <body id="bodytemplate">
-  <h3>
-    <center>Data Ticket IT Helpdesk System</center>
-  </h3>
+  <h2>
+    <center><strong>Tracking ID Ticket</strong></center>
+  </h2>
   <div class="col-lg-12" style="margin-top: 40px;">
 
     <div class="mb-4">
       <form id="myForm">
         <div class="mb-3">
-          <label for="exampleInputIdTiket1" class="form-label">Id Tiket</label>
+          <label for="exampleInputIdTiket1" class="form-label">ID TIKET</label>
           <input type="text" name="idtiket" class="form-control" id="id_tiket">
-          <div id="IdTiketlHelp" class="form-text">We'll never share your Id Tiket with anyone else.</div>
+          <div id="IdTiketlHelp" class="form-text">........</div>
         </div>
         <!-- 
         <div class="mb-3 form-check">

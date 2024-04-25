@@ -101,7 +101,7 @@ if (empty($_SESSION['username'])) {
             $laporan .= "<td>Problem</td><td>:</td><td>$problem</td>";
             $laporan .= "</tr>";
             $laporan .= "<tr>";
-            $laporan .= "<td>Status/td><td>:</td><td>$open</td>";
+            $laporan .= "<td>Status</td><td>:</td><td>$open</td>";
             $laporan .= "</tr>";
 
 
