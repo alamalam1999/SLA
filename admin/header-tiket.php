@@ -103,50 +103,49 @@
                    <h6 class="dropdown-header">
                        Message Center
                    </h6>
-                   <a class="dropdown-item d-flex align-items-center" href="#">
-                       <div class="dropdown-list-image mr-3">
-                           <img class="rounded-circle" src="img/undraw_profile_1.svg" alt="...">
-                           <div class="status-indicator bg-success"></div>
-                       </div>
-                       <div class="font-weight-bold">
-                           <div class="text-truncate">Hi there! I am wondering if you can help me with a
-                               problem I've been having.</div>
-                           <div class="small text-gray-500">Emily Fowler · 58m</div>
-                       </div>
-                   </a>
-                   <a class="dropdown-item d-flex align-items-center" href="#">
-                       <div class="dropdown-list-image mr-3">
-                           <img class="rounded-circle" src="img/undraw_profile_2.svg" alt="...">
-                           <div class="status-indicator"></div>
-                       </div>
-                       <div>
-                           <div class="text-truncate">I have the photos that you ordered last month, how
-                               would you like them sent to you?</div>
-                           <div class="small text-gray-500">Jae Chun · 1d</div>
-                       </div>
-                   </a>
-                   <a class="dropdown-item d-flex align-items-center" href="#">
-                       <div class="dropdown-list-image mr-3">
-                           <img class="rounded-circle" src="img/undraw_profile_3.svg" alt="...">
-                           <div class="status-indicator bg-warning"></div>
-                       </div>
-                       <div>
-                           <div class="text-truncate">Last month's report looks great, I am very happy with
-                               the progress so far, keep up the good work!</div>
-                           <div class="small text-gray-500">Morgan Alvarez · 2d</div>
-                       </div>
-                   </a>
-                   <a class="dropdown-item d-flex align-items-center" href="#">
-                       <div class="dropdown-list-image mr-3">
-                           <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="...">
-                           <div class="status-indicator bg-success"></div>
-                       </div>
-                       <div>
-                           <div class="text-truncate">Am I a good boy? The reason I ask is because someone
-                               told me that people say this to all dogs, even if they aren't good...</div>
-                           <div class="small text-gray-500">Chicken the Dog · 2w</div>
-                       </div>
-                   </a>
+                   <?php
+                    $tanggal = date("Y-m-d");
+                    $query = "SELECT * FROM `tiket` WHERE status = 'new' and tanggal ='$tanggal'";
+                    $tampil = mysqli_query($koneksi, $query);
+                    ?>
+                   <?php
+                    $no = 0;
+                    while ($data = mysqli_fetch_array($tampil)) {
+                        $no++; ?>
+
+                       <a class="dropdown-item d-flex align-items-center" href="edit-tiket.php?id=<?php echo $data['id_tiket'] ?>">
+                           <div class="dropdown-list-image mr-3">
+                               <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="...">
+                               <div class="status-indicator bg-success"></div>
+                           </div>
+                           <div>
+                               <div class="text-truncate">
+                                   Problem : <?php echo $data['problem']; ?>
+                                   <?php echo $no; ?>. <?php echo $data['nama']; ?> | <?php echo $data['departemen']; ?></div>
+                               <div class="small text-gray-500"> Tiket <?php echo $data['status']; ?></div>
+                           </div>
+                       </a>
+                   <?php
+                    }
+                    ?>
+
+                   <?php
+                    if ($total2 == '0') {
+                    ?>
+                       <a class="dropdown-item d-flex align-items-center" href="#">
+                           <div class="dropdown-list-image mr-3">
+                               <img class="rounded-circle" src="https://static.vecteezy.com/system/resources/previews/007/104/553/non_2x/search-no-result-not-found-concept-illustration-flat-design-eps10-modern-graphic-element-for-landing-page-empty-state-ui-infographic-icon-vector.jpg" alt="...">
+                               <div class="status-indicator bg-success"></div>
+                           </div>
+                           <div>
+                               <div class="text-truncate">Belum ada Tiket Baru Masuk</div>
+                               <div class="small text-gray-500"> Kosong</div>
+                           </div>
+                       </a>
+                   <?php
+                    }
+                    ?>
+
                    <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
                </div>
            </li>

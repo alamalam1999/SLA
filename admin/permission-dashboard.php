@@ -101,11 +101,23 @@ if (empty($_SESSION['username'])) {
                                 ?>
                             </tbody>
                         </table>
-                        <div>
-                            <input type="hidden" name="count" value="<?php echo $count ?>">
-                            <button type="submit">Centang Semua</button>
-                        </div>
-                        <!-- </form> -->
+                        <form action="process_save_rule.php" method="POST" enctype="multipart/form-data">
+                            <div>
+                                <input type="hidden" name="type_check" value="centang_semua">
+                                <input type="hidden" name="id_user" value="<?php echo $id_check ?>">
+                                <input type="hidden" name="count" value="<?php echo $count ?>">
+                                <button type="submit" class="btn btn-warning">Centang Semua</button>
+                            </div>
+                        </form>
+
+                        <form action="process_save_rule.php" method="POST" enctype="multipart/form-data">
+                            <div class="mt-3">
+                                <input type="hidden" name="type_check" value="hapus_semua">
+                                <input type="hidden" name="id_user" value="<?php echo $id_check ?>">
+                                <input type="hidden" name="count" value="<?php echo $count ?>">
+                                <button type="submit" class="btn btn-danger">Hapus Semua</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
 
