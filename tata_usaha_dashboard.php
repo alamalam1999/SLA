@@ -147,13 +147,13 @@ include "head/head.php";
                                                         <div class="form-input mb-2">
                                                             <strong><label class="cd-label">Kendala</label></strong>
                                                             <select class="form-control " name="kendala_tatausaha" id="kendala_tatausaha" required>
-                                                                <option value="" selected>Pilih</option>
-                                                                <option value="Test 1">Test 1</option>
-                                                                <option value="Test 2">Test 2</option>
-                                                                <option value="Test 3">Test 3</option>
-                                                                <option value="Test 4">Test 4</option>
-                                                                <option value="Test 5">Test 5</option>
-                                                                <option value="Test 6">Test 6</option>
+                                                            <option value="" selected>Pilih</option>
+                                                                <option value="Test 1">Keuangan</option>
+                                                                <option value="Test 2">Sarana dan Prasarana</option>
+                                                                <option value="Test 3">Pemeliharaan Gedung</option>
+                                                                <option value="Test 4">Internet</option>
+                                                                <option value="Test 5">Elektonik</option>
+                                                                <option value="Test 6">Keamanan dan Kebersihan</option>
                                                                 <option value="Test 7">Test 7</option>
                                                             </select>
                                                         </div>
