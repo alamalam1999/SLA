@@ -92,7 +92,7 @@
   <script>
     var _img = document.getElementById('bodytemplate');
     $("#bodytemplate").css("background-image", "url('image/SLA-Image.jpg')");
-    $("#bodytemplate").css("background-size", "auto auto");
+    $("#bodytemplate").css("background-size", "100%");
     console.log(_img);
   </script>
 </body>

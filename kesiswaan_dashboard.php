@@ -159,6 +159,11 @@ include "head/head.php";
                                                         </div>
 
                                                         <div class="input-input mb-2">
+                                                            <strong><label class="cd-label text-left">Lokasi Kendala</label></strong>
+                                                            <input name="lokasi_kendala" type="text" class="form-control">
+                                                        </div>
+
+                                                        <div class="input-input mb-2">
                                                             <strong><label class="cd-label text-left">Detail kendala</label></strong>
                                                             <textarea class="form-control " name="problem" id="problem" required></textarea>
                                                         </div>
@@ -220,7 +225,7 @@ include "head/head.php";
     <script>
         var _img = document.getElementById('bodytemplate');
         $("#bodytemplate").css("background-image", "url('image/SLA-Image.jpg')");
-        $("#bodytemplate").css("background-size", "auto auto");
+        $("#bodytemplate").css("background-size", "100%");
         console.log(_img);
     </script>
 

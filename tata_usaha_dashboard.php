@@ -147,7 +147,7 @@ include "head/head.php";
                                                         <div class="form-input mb-2">
                                                             <strong><label class="cd-label">Kendala</label></strong>
                                                             <select class="form-control " name="kendala_tatausaha" id="kendala_tatausaha" required>
-                                                            <option value="" selected>Pilih</option>
+                                                                <option value="" selected>Pilih</option>
                                                                 <option value="Test 1">Keuangan</option>
                                                                 <option value="Test 2">Sarana dan Prasarana</option>
                                                                 <option value="Test 3">Pemeliharaan Gedung</option>
@@ -158,6 +158,10 @@ include "head/head.php";
                                                                 <option value="Test 8">Fasilitas Umum (Kantin, Parkir, Tempat Ibadah, Taman)</option>
                                                                 <option value="Test 9">Fasilitas Ruangan (Kelas, Perpustakaan, Laboratorium)</option>
                                                             </select>
+                                                        </div>
+                                                        <div class="input-input mb-2">
+                                                            <strong><label class="cd-label text-left">Lokasi Kendala</label></strong>
+                                                            <input name="lokasi_kendala" type="text" class="form-control">
                                                         </div>
 
                                                         <div class="input-input mb-2">
