@@ -153,8 +153,10 @@ include "head/head.php";
                                                                 <option value="Test 3">Pemeliharaan Gedung</option>
                                                                 <option value="Test 4">Internet</option>
                                                                 <option value="Test 5">Elektonik</option>
-                                                                <option value="Test 6">Keamanan dan Kebersihan</option>
-                                                                <option value="Test 7">Test 7</option>
+                                                                <option value="Test 6">Keamanan</option>
+                                                                <option value="Test 7">Kebersihan</option>
+                                                                <option value="Test 8">Fasilitas Umum (Kantin, Parkir, Tempat Ibadah, Taman)</option>
+                                                                <option value="Test 9">Fasilitas Ruangan (Kelas, Perpustakaan, Laboratorium)</option>
                                                             </select>
                                                         </div>
 
