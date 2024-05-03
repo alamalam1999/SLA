@@ -12,19 +12,21 @@ include "head/head.php";
     if (isset($_POST['input'])) {
 
         $id_tiket  = $_POST['id_tiket'];
-        $kendala_tata_usaha = $_POST['departemen']; //done
         $waktu     = $_POST['waktu'];
-        $pc_no     = "KOSONG";
+
         $tanggal   = $_POST['tanggal'];
         $no_hp     = $_POST['no_hp']; //done
         $nama      = $_POST['nama']; //done
         $email     = $_POST['email']; //done
         $departemen = $_POST['departemen'];
-        $problem   = $_POST['problem']; //done
+        $problem   = $_POST['kendala_kurikulum']; //done
         $filename  = $_FILES["choosefile"]["name"]; //done
         $tempname  = $_FILES["choosefile"]["tmp_name"]; //done
         $none      = "";
         $open      = "new";
+        $lokasi_kendala = $_POST['lokasi_kendala'];
+        $no_hp = $_POST['no_hp'];
+        $detail_kendala = $_POST['detail_kendala'];
 
         $folder = "" . $filename;
 
@@ -34,8 +36,7 @@ include "head/head.php";
         $laporan .= "<tr>";
         $laporan .= "<td>Tanggal</td><td>:</td><td>$tanggal</td>";
         $laporan .= "</tr>";
-        $laporan .= "<tr>";
-        $laporan .= "<td>PC NO</td><td>:</td><td>$pc_no</td>";
+
         $laporan .= "</tr>";
         $laporan .= "<tr>";
         $laporan .= "<td>Nama</td><td>:</td><td>$nama</td>";
@@ -75,8 +76,8 @@ include "head/head.php";
             // echo "HASIL = " . mysqli_num_rows($cek);
             if (mysqli_num_rows($cek) == 0) {
                 // echo "masuk kesini";
-                $insert = mysqli_query($koneksi,  "INSERT INTO tiket(id_tiket,tanggal,waktu,pc_no,nama, email, departemen, problem ,penanganan, status, filename) 
-                                                    VALUES('$id_tiket','$tanggal','$waktu','$pc_no','$nama','$email','$departemen','$problem','$none','$open','$filename')");
+                $insert = mysqli_query($koneksi,  "INSERT INTO tiket(id_tiket,tanggal,waktu,no_hp,nama, email, departemen, problem,lokasi_kendala,detail_kendala ,penanganan, status, filename) 
+                VALUES('$id_tiket','$tanggal','$waktu','$no_hp','$nama','$email','$departemen','$problem','$lokasi_kendala','$detail_kendala','$none','$open','$filename')");
                 echo $insert;
                 if ($insert) {
 
@@ -115,7 +116,7 @@ include "head/head.php";
                         <div class="row">
                             <div class="col">
                                 <div class="p-5">
-                                    <form method="POST" enctype="multipart/form-data" action="tata_usaha_dashboard.php">
+                                    <form method="POST" enctype="multipart/form-data" action="kurikulum_dashboard.php">
                                         <div class="container">
                                             <div class="row">
                                                 <div class="">
@@ -125,7 +126,7 @@ include "head/head.php";
                                                     </div>
                                                     <div class="container">
                                                         <input type="hidden" name="id_tiket" value="<?php echo date("dmYHis"); ?>" id="id_ticket" />
-                                                        <input type="hidden" name="waktu" value="<?php echo date("dmYHis"); ?>" id="waktu" />
+                                                        <input type="hidden" name="waktu" value="<?php echo date("d-m-Y H:i:s"); ?>" id="waktu" />
                                                         <input type="hidden" name="tanggal" value="<?php echo date("Y-m-d"); ?>" id="tanggal" />
                                                         <input type="hidden" name="departemen" value="kurikulum" id="departemen" />
 
@@ -146,7 +147,7 @@ include "head/head.php";
 
                                                         <div class="form-input mb-2">
                                                             <strong><label class="cd-label">Kendala</label></strong>
-                                                            <select class="form-control " name="kendala_tatausaha" id="kendala_tatausaha" required>
+                                                            <select class="form-control " name="kendala_kurikulum" id="kendala_kurikulum" required>
                                                                 <option value="" selected>Pilih</option>
                                                                 <option value="Test 1">Test 1</option>
                                                                 <option value="Test 2">Test 2</option>
@@ -165,7 +166,7 @@ include "head/head.php";
 
                                                         <div class="input-input mb-2">
                                                             <strong><label class="cd-label text-left">Detail kendala</label></strong>
-                                                            <textarea class="form-control " name="problem" id="problem" required></textarea>
+                                                            <textarea class="form-control " name="detail_kendala" id="detail_kendala" required></textarea>
                                                         </div>
 
                                                         <div class="input-input mb-2">

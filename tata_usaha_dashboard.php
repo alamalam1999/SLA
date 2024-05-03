@@ -3,6 +3,8 @@
 
 <?php
 include "head/head.php";
+
+date_default_timezone_set('Asia/Jakarta');
 ?>
 
 <body id="bodytemplate" class="bg-gradient-primary">
@@ -12,19 +14,21 @@ include "head/head.php";
     if (isset($_POST['input'])) {
 
         $id_tiket  = $_POST['id_tiket'];
-        $kendala_tata_usaha = $_POST['departemen']; //done
         $waktu     = $_POST['waktu'];
-        $pc_no     = "KOSONG";
+
         $tanggal   = $_POST['tanggal'];
         $no_hp     = $_POST['no_hp']; //done
         $nama      = $_POST['nama']; //done
         $email     = $_POST['email']; //done
         $departemen = $_POST['departemen'];
-        $problem   = $_POST['problem']; //done
+        $problem   = $_POST['kendala_tatausaha']; //done
         $filename  = $_FILES["choosefile"]["name"]; //done
         $tempname  = $_FILES["choosefile"]["tmp_name"]; //done
         $none      = "";
         $open      = "new";
+        $lokasi_kendala = $_POST['lokasi_kendala'];
+        $no_hp = $_POST['no_hp'];
+        $detail_kendala = $_POST['detail_kendala'];
 
         $folder = "" . $filename;
 
@@ -34,8 +38,7 @@ include "head/head.php";
         $laporan .= "<tr>";
         $laporan .= "<td>Tanggal</td><td>:</td><td>$tanggal</td>";
         $laporan .= "</tr>";
-        $laporan .= "<tr>";
-        $laporan .= "<td>PC NO</td><td>:</td><td>$pc_no</td>";
+
         $laporan .= "</tr>";
         $laporan .= "<tr>";
         $laporan .= "<td>Nama</td><td>:</td><td>$nama</td>";
@@ -75,8 +78,8 @@ include "head/head.php";
             // echo "HASIL = " . mysqli_num_rows($cek);
             if (mysqli_num_rows($cek) == 0) {
                 // echo "masuk kesini";
-                $insert = mysqli_query($koneksi,  "INSERT INTO tiket(id_tiket,tanggal,waktu,pc_no,nama, email, departemen, problem ,penanganan, status, filename) 
-                                                    VALUES('$id_tiket','$tanggal','$waktu','$pc_no','$nama','$email','$departemen','$problem','$none','$open','$filename')");
+                $insert = mysqli_query($koneksi,  "INSERT INTO tiket(id_tiket,tanggal,waktu,no_hp,nama, email, departemen, problem,lokasi_kendala,detail_kendala ,penanganan, status, filename) 
+                                                    VALUES('$id_tiket','$tanggal','$waktu','$no_hp','$nama','$email','$departemen','$problem','$lokasi_kendala','$detail_kendala','$none','$open','$filename')");
                 echo $insert;
                 if ($insert) {
 
@@ -125,7 +128,7 @@ include "head/head.php";
                                                     </div>
                                                     <div class="container">
                                                         <input type="hidden" name="id_tiket" value="<?php echo date("dmYHis"); ?>" id="id_ticket" />
-                                                        <input type="hidden" name="waktu" value="<?php echo date("dmYHis"); ?>" id="waktu" />
+                                                        <input type="hidden" name="waktu" value="<?php echo date("d-m-Y H:i:s"); ?>" id="waktu" />
                                                         <input type="hidden" name="tanggal" value="<?php echo date("Y-m-d"); ?>" id="tanggal" />
                                                         <input type="hidden" name="departemen" value="tata_usaha" id="departemen" />
 
@@ -148,15 +151,15 @@ include "head/head.php";
                                                             <strong><label class="cd-label">Kendala</label></strong>
                                                             <select class="form-control " name="kendala_tatausaha" id="kendala_tatausaha" required>
                                                                 <option value="" selected>Pilih</option>
-                                                                <option value="Test 1">Keuangan</option>
-                                                                <option value="Test 2">Sarana dan Prasarana</option>
-                                                                <option value="Test 3">Pemeliharaan Gedung</option>
-                                                                <option value="Test 4">Internet</option>
-                                                                <option value="Test 5">Elektonik</option>
-                                                                <option value="Test 6">Keamanan</option>
-                                                                <option value="Test 7">Kebersihan</option>
-                                                                <option value="Test 8">Fasilitas Umum (Kantin, Parkir, Tempat Ibadah, Taman)</option>
-                                                                <option value="Test 9">Fasilitas Ruangan (Kelas, Perpustakaan, Laboratorium)</option>
+                                                                <option value="keuangan">Keuangan</option>
+                                                                <option value="sarana dan prasana">Sarana dan Prasarana</option>
+                                                                <option value="pemeliharaan gedung">Pemeliharaan Gedung</option>
+                                                                <option value="internet">Internet</option>
+                                                                <option value="elektronik">Elektronik</option>
+                                                                <option value="keamanan">Keamanan</option>
+                                                                <option value="kebersihan">Kebersihan</option>
+                                                                <option value="fasilitas umum">Fasilitas Umum (Kantin, Parkir, Tempat Ibadah, Taman)</option>
+                                                                <option value="fasilitas ruangan">Fasilitas Ruangan (Kelas, Perpustakaan, Laboratorium)</option>
                                                             </select>
                                                         </div>
                                                         <div class="input-input mb-2">
@@ -166,7 +169,7 @@ include "head/head.php";
 
                                                         <div class="input-input mb-2">
                                                             <strong><label class="cd-label text-left">Detail kendala</label></strong>
-                                                            <textarea class="form-control " name="problem" id="problem" required></textarea>
+                                                            <textarea class="form-control " name="detail_kendala" id="detail_kendala" required></textarea>
                                                         </div>
 
                                                         <div class="input-input mb-2">
