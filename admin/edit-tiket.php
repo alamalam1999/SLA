@@ -157,8 +157,8 @@ if (empty($_SESSION['username'])) {
                       <input class="form-control" id="tanggal" name="tanggal" value="<?php echo $row['tanggal']; ?>" type="text" readonly="readonly">
                       <label for="Tanggal">Tanggal</label>
 
-                      <input class="form-control" id="pc_no" name="pc_no" value="<?php echo $row['pc_no']; ?>" type="text" readonly="readonly">
-                      <label for="PC No">Nama Barang</label>
+                      <input class="form-control" id="pc_no" name="pc_no" value="<?php echo $row['no_hp']; ?>" type="text" readonly="readonly">
+                      <label for="PC No">Number Phone</label>
 
                       <input class="form-control" id="nama" name="nama" value="<?php echo $row['nama']; ?>" type="text" readonly="readonly">
                       <label for="Nama">Nama</label>

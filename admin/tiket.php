@@ -193,10 +193,11 @@ if (empty($_SESSION['username'])) {
                     "processing": true,
                     "serverSide": true,
                     "ajax": {
-                        url: "ajax-grid-data1.php", // json datasource
-                        type: "post", // method  , by default get
-                        error: function() { // error handling
-                            $("#lookup").append('<tbody class="employee-grid-error"><tr><th colspan="3">No data found in the server</th></tr></tbody>');
+                        url: "ajax-grid-data1.php", // JSON data source
+                        type: "POST", // HTTP method (default is GET)
+                        error: function(jqXHR, textStatus, errorThrown) { // Error handling
+                            console.error("DataTables error:", textStatus, errorThrown);
+                            $("#lookup").append('<tbody class="employee-grid-error"><tr><th colspan="3">Error loading data from the server. Please try again later.</th></tr></tbody>');
                         }
                     }
                 });
