@@ -64,7 +64,7 @@ if (empty($_SESSION['username'])) {
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <?php $tampil = mysqli_query($koneksi, "select * from tiket where status='new'");
+                                            <?php $tampil = mysqli_query($koneksi, "select * from tiket where status='new' and departemen in('" . implode("','", $test->$group()) . "')");
                                             $total = mysqli_num_rows($tampil);
                                             ?>
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
@@ -85,7 +85,7 @@ if (empty($_SESSION['username'])) {
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <?php $tampil1 = mysqli_query($koneksi, "select * from tiket where status='proses'");
+                                            <?php $tampil1 = mysqli_query($koneksi, "select * from tiket where status='proses' and departemen in('" . implode("','", $test->$group()) . "')");
                                             $total1 = mysqli_num_rows($tampil1);
                                             ?>
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
@@ -106,7 +106,7 @@ if (empty($_SESSION['username'])) {
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <?php $tampil2 = mysqli_query($koneksi, "select * from tiket where status='close'");
+                                            <?php $tampil2 = mysqli_query($koneksi, "select * from tiket where status='close' and departemen in('" . implode("','", $test->$group()) . "')");
                                             $total2 = mysqli_num_rows($tampil2);
                                             ?>
                                             <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Ticket Done</div>
@@ -126,7 +126,7 @@ if (empty($_SESSION['username'])) {
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <?php $tampil3 = mysqli_query($koneksi, "select * from tiket order by id_tiket");
+                                            <?php $tampil3 = mysqli_query($koneksi, "select * from tiket where departemen in('" . implode("','", $test->$group()) . "') order by id_tiket");
                                             $total3 = mysqli_num_rows($tampil3);
                                             ?>
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Total Ticket</div>
