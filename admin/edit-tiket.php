@@ -59,7 +59,7 @@ if (empty($_SESSION['username'])) {
               $waktu = $row['waktu'];
               $id_tiket  = $_POST['id_tiket'];
               $tanggal   = $_POST['tanggal'];
-              $pc_no     = $_POST['pc_no'];
+              $no_hp     = $_POST['no_hp'];
               $nama      = $_POST['nama'];
               $email     = $_POST['email'];
               $departemen = $_POST['departemen'];
@@ -81,7 +81,7 @@ if (empty($_SESSION['username'])) {
               $laporan .= "<td>Tanggal</td><td>:</td><td>$tanggal</td>";
               $laporan .= "</tr>";
               $laporan .= "<tr>";
-              $laporan .= "<td>PC NO</td><td>:</td><td>$pc_no</td>";
+              $laporan .= "<td>PC NO</td><td>:</td><td>$no_hp</td>";
               $laporan .= "</tr>";
               $laporan .= "<tr>";
               $laporan .= "<td>Nama</td><td>:</td><td>$nama</td>";
@@ -127,7 +127,7 @@ if (empty($_SESSION['username'])) {
                 echo "Email gagal dikirim : " . $sendmail->ErrorInfo;
               } else {
 
-                $update = mysqli_query($koneksi, "UPDATE tiket SET tanggal='$tanggal', pc_no='$pc_no', nama='$nama', email='$email', departemen='$departemen', problem='$problem', penanganan='$penanganan', status='$status', pic='$pic', fotopengerjaan='$fotopengerjaan' WHERE id_tiket='$kd'") or die(mysqli_error());
+                $update = mysqli_query($koneksi, "UPDATE tiket SET tanggal='$tanggal', no_hp='$no_hp', nama='$nama', email='$email', departemen='$departemen', problem='$problem', penanganan='$penanganan', status='$status', pic='$pic', fotopengerjaan='$fotopengerjaan' WHERE id_tiket='$kd'") or die(mysqli_error());
                 if ($update) {
                   move_uploaded_file($tempname, $folder);
                   echo '<script>sweetAlert({
@@ -157,7 +157,7 @@ if (empty($_SESSION['username'])) {
                       <input class="form-control" id="tanggal" name="tanggal" value="<?php echo $row['tanggal']; ?>" type="text" readonly="readonly">
                       <label for="Tanggal">Tanggal</label>
 
-                      <input class="form-control" id="pc_no" name="pc_no" value="<?php echo $row['no_hp']; ?>" type="text" readonly="readonly">
+                      <input class="form-control" id="no_hp" name="no_hp" value="<?php echo $row['no_hp']; ?>" type="text" readonly="readonly">
                       <label for="PC No">Number Phone</label>
 
                       <input class="form-control" id="nama" name="nama" value="<?php echo $row['nama']; ?>" type="text" readonly="readonly">

@@ -232,7 +232,7 @@ if (empty($_SESSION['username'])) {
                                         </li>
                                         <?php
                                         $tanggal = date("Y-m-d");
-                                        $query = "SELECT * FROM tiket WHERE status='proses' limit 7";
+                                        $query = "SELECT * FROM tiket WHERE status='proses' and departemen in('" . implode("','", $test->$group()) . "') limit 7";
                                         $tampil = mysqli_query($koneksi, $query) or die(mysqli_error());
                                         ?>
                                         <?php
@@ -290,7 +290,7 @@ if (empty($_SESSION['username'])) {
                                         </li>
                                         <?php
                                         $tanggal = date("Y-m-d");
-                                        $query1 = "SELECT * FROM tiket WHERE status='close' limit 7";
+                                        $query1 = "SELECT * FROM tiket WHERE status='close' and departemen in('" . implode("','", $test->$group()) . "') limit 7";
                                         $tampil1 = mysqli_query($koneksi, $query1) or die(mysqli_error());
                                         ?>
                                         <?php
