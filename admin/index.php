@@ -184,7 +184,7 @@ if (empty($_SESSION['username'])) {
                                             <li class="collection-item">
                                                 <div class="row">
                                                     <div class="col s9">
-                                                        <p class="collections-title"><?php echo $no; ?>. <?php echo $data['nama']; ?> | <?php echo $data['departemen']; ?></p>
+                                                        <p class="collections-title"> <strong><?php echo $no; ?>.</strong> <?php echo $data['nama']; ?> | <?php echo $data['departemen']; ?></p>
                                                         <p class="collections-content">Problem : <?php echo $data['problem']; ?></p>
                                                     </div>
                                                     <div class="col s3">
@@ -197,6 +197,7 @@ if (empty($_SESSION['username'])) {
                                                     </div>
                                                 </div>
                                             </li>
+                                            <hr style="height:3px;border-width:0;color:gray;background-color:gray">
                                         <?php
                                         }
                                         ?>
@@ -242,7 +243,7 @@ if (empty($_SESSION['username'])) {
                                             <li class="collection-item">
                                                 <div class="row">
                                                     <div class="col s9">
-                                                        <p class="collections-title"><?php echo $no; ?>. <?php echo $data['nama']; ?> | <?php echo $data['departemen']; ?></p>
+                                                        <p class="collections-title"><strong><?php echo $no; ?>.</strong> <?php echo $data['nama']; ?> | <?php echo $data['departemen']; ?></p>
                                                         <p class="collections-content">Problem : <?php echo $data['problem']; ?></p>
                                                     </div>
                                                     <div class="col s3">
@@ -255,6 +256,7 @@ if (empty($_SESSION['username'])) {
                                                     </div>
                                                 </div>
                                             </li>
+                                            <hr style="height:3px;border-width:0;color:gray;background-color:gray">
                                         <?php
                                         }
                                         ?>
@@ -300,7 +302,7 @@ if (empty($_SESSION['username'])) {
                                             <li class="collection-item">
                                                 <div class="row">
                                                     <div class="col s9">
-                                                        <p class="collections-title"><?php echo $no; ?>. <?php echo $data1['nama']; ?> | <?php echo $data1['departemen']; ?></p>
+                                                        <p class="collections-title"><strong><?php echo $no; ?>.</strong> <?php echo $data1['nama']; ?> | <?php echo $data1['departemen']; ?></p>
                                                         <p class="collections-content">Problem : <?php echo $data1['problem']; ?></p>
                                                         <p class="collections-content">Penanganan : <?php echo $data1['penanganan']; ?></p>
                                                     </div>
@@ -314,6 +316,7 @@ if (empty($_SESSION['username'])) {
                                                     </div>
                                                 </div>
                                             </li>
+                                            <hr style="height:3px;border-width:0;color:gray;background-color:gray">
                                         <?php
                                         }
                                         ?>

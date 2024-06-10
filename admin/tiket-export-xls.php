@@ -28,7 +28,6 @@ $sqlshow = mysqli_query($koneksi, "SELECT * FROM tiket ORDER BY id_tiket ASC");
 			<th>Nomor</th>
 			<th>Id Tiket</th>
 			<th>Tanggal</th>
-			<th>PC No</th>
 			<th>Nama</th>
 			<th>Email</th>
 			<th>Departemen</th>
@@ -46,7 +45,6 @@ $sqlshow = mysqli_query($koneksi, "SELECT * FROM tiket ORDER BY id_tiket ASC");
 			echo '<td>' . $nomor . '</td>';
 			echo '<td>' . $rowshow['id_tiket'] . '</td>';
 			echo '<td>' . $rowshow['tanggal'] . '</td>';
-			echo '<td>' . $rowshow['pc_no'] . '</td>';
 			echo '<td>' . $rowshow['nama'] . '</td>';
 			echo '<td>' . $rowshow['email'] . '</td>';
 			echo '<td>' . $rowshow['departemen'] . '</td>';
