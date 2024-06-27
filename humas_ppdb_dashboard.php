@@ -81,8 +81,9 @@ include "head/head.php";
                 echo $insert;
                 if ($insert) {
 
-                    echo $tempname;
-                    move_uploaded_file($tempname, $folder);
+                    $folder = "image/";
+                    $path = $folder . $filename; // New variable
+                    move_uploaded_file($tempname, $path);
                     echo '<script>sweetAlert({
 	                                                   title: "Keluhan berhasil dikirim!", 
                                                         text: "Cek email anda untuk mengetahui nomor tiket!", 

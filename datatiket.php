@@ -76,8 +76,10 @@
               '<p>Email: ' + data.email + '</p>' +
               '<p>Department: ' + data.departemen + '</p>' +
               '<p>Problem: ' + data.problem + '</p>' +
+              '<p>Detail Kendala: ' + data.detail_kendala + '</p>' +
               '<p>Date: ' + data.tanggal + '</p>' +
               '<p>Status: ' + data.status + '</p>' +
+              '<p>Penanganan: ' + data.penanganan + '</p>' +
               '<p>Time: ' + data.waktu + '</p>' +
               '<p>PIC: ' + data.pic + '</p></div>'
             );

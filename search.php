@@ -14,8 +14,10 @@ if (isset($_GET['id_tiket']) && !empty($_GET['id_tiket'])) {
             'email' => $row['email'],
             'departemen' => $row['departemen'],
             'problem' => $row['problem'],
+            'detail_kendala' => $row['detail_kendala'],
             'tanggal' => $row['tanggal'],
             'status' => $row['status'],
+            'penanganan' => $row['penanganan'],
             'waktu' => $row['waktu'],
             'pic' => $row['pic']
         ];

@@ -80,9 +80,10 @@ include "head/head.php";
                 VALUES('$id_tiket','$tanggal','$waktu','$no_hp','$nama','$email','$departemen','$problem','$lokasi_kendala','$detail_kendala','$none','$open','$filename')");
                 // echo $insert;
                 if ($insert) {
+                    $folder = "image/";
+                    $path = $folder . $filename; // New variable
 
-                    echo $tempname;
-                    move_uploaded_file($tempname, $folder);
+                    move_uploaded_file($tempname, $path);
                     echo '<script>sweetAlert({
 	                                                   title: "Keluhan berhasil dikirim!", 
                                                         text: "Cek email anda untuk mengetahui nomor tiket!", 
