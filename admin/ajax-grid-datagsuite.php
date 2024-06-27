@@ -23,7 +23,7 @@ $columns = array(
 
 // getting total number records without any search
 $sql = "SELECT id_tiket, tanggal, name,email, status, lokasi";
-$sql .= " FROM tiket_gsuite";
+$sql .= " FROM tiket";
 $query = mysqli_query($conn, $sql) or die("ajax-grid-data.php: get Tiket");
 $totalData = mysqli_num_rows($query);
 $totalFiltered = $totalData;  // when there is no search parameter then total number rows = total number filtered rows.
@@ -31,7 +31,7 @@ $totalFiltered = $totalData;  // when there is no search parameter then total nu
 if (!empty($requestData['search']['value'])) {
 	// if there is a search parameter
 	$sql = "SELECT id_tiket, tanggal, name,email, status, lokasi";
-	$sql .= " FROM tiket_gsuite";
+	$sql .= " FROM tiket";
 	$sql .= " WHERE id_tiket LIKE '" . $requestData['search']['value'] . "%' ";    // $requestData['search']['value'] contains search parameter
 	$sql .= " OR tanggal LIKE '" . $requestData['search']['value'] . "%' ";
 	$sql .= " OR name LIKE '" . $requestData['search']['value'] . "%' ";
@@ -46,7 +46,7 @@ if (!empty($requestData['search']['value'])) {
 
 } else {
 	$sql = "SELECT id_tiket, tanggal, name,email, status, lokasi";
-	$sql .= " FROM tiket_gsuite";
+	$sql .= " FROM tiket";
 	$sql .= " ORDER BY " . $columns[$requestData['order'][0]['column']] . "   " . $requestData['order'][0]['dir'] . "   LIMIT " . $requestData['start'] . " ," . $requestData['length'] . "   ";
 	$query = mysqli_query($conn, $sql) or die("ajax-grid-data.php: get Tiket");
 }
@@ -55,7 +55,7 @@ $data = array();
 while ($row = mysqli_fetch_array($query)) {  // preparing an array
 
 	$idtikettest = $row["id_tiket"];
-	$sqlcheckimage = "select * from tiket_gsuite where id_tiket = '$idtikettest'";
+	$sqlcheckimage = "select * from tiket where id_tiket = '$idtikettest'";
 	$querytest = mysqli_query($conn, $sqlcheckimage);
 	$nestedData = array();
 

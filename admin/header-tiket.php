@@ -89,7 +89,7 @@
            <?php
             $tanggal = date("Y-m-d");
             //  $tampil2=mysqli_query($koneksi, "select * from tiket where tanggal='$tanggal' and status='open'");
-            $tampil2 = mysqli_query($koneksi, "SELECT id_tiket FROM `tiket_gsuite` WHERE status = 'new' and tanggal ='$tanggal'  UNION SELECT id_tiket FROM `tiket` WHERE status = 'new' and tanggal ='$tanggal' and departemen in('" . implode("','", $test->$group()) . "')");
+            $tampil2 = mysqli_query($koneksi, "SELECT id_tiket FROM `tiket` WHERE status = 'new' and tanggal ='$tanggal'  UNION SELECT id_tiket FROM `tiket` WHERE status = 'new' and tanggal ='$tanggal' and departemen in('" . implode("','", $test->$group()) . "')");
             $total2 = mysqli_num_rows($tampil2);
             ?>
            <li class="nav-item dropdown no-arrow mx-1">

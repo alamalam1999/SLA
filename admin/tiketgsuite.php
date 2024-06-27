@@ -64,7 +64,7 @@ if (empty($_SESSION['username'])) {
                             <?php
                             if (isset($_GET['aksi']) == 'delete') {
                                 $id = $_GET['id'];
-                                $cek = mysqli_query($koneksi, "SELECT * FROM tiket_gsuite WHERE id_tiket='$id'");
+                                $cek = mysqli_query($koneksi, "SELECT * FROM tiket WHERE id_tiket='$id'");
                                 if (mysqli_num_rows($cek) == 0) {
                                     echo '<script>sweetAlert({
 	                                                   title: "Ups!", 
@@ -72,7 +72,7 @@ if (empty($_SESSION['username'])) {
                                                         type: "error"
                                                         });</script>';
                                 } else {
-                                    $delete = mysqli_query($koneksi, "DELETE FROM tiket_gsuite WHERE id_tiket='$id'");
+                                    $delete = mysqli_query($koneksi, "DELETE FROM tiket WHERE id_tiket='$id'");
                                     if ($delete) {
                                         echo '<script>sweetAlert({
 	                                                   title: "Berhasil!", 

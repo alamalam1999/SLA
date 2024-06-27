@@ -52,7 +52,7 @@ if (empty($_SESSION['username'])) {
                         <!--card stats start-->
                         <div id="card-stats">
                             <div class="row">
-                                <?php $tampil = mysqli_query($koneksi, "select * from tiket_gsuite where status='open'");
+                                <?php $tampil = mysqli_query($koneksi, "select * from tiket where status='open'");
                                 $total = mysqli_num_rows($tampil);
                                 ?>
                                 <div class="col s12 m6 l3">
@@ -68,7 +68,7 @@ if (empty($_SESSION['username'])) {
                                         </div>
                                     </div>
                                 </div>
-                                <?php $tampil1 = mysqli_query($koneksi, "select * from tiket_gsuite where status='close'");
+                                <?php $tampil1 = mysqli_query($koneksi, "select * from tiket where status='close'");
                                 $total1 = mysqli_num_rows($tampil1);
                                 ?>
                                 <div class="col s12 m6 l3">
@@ -85,7 +85,7 @@ if (empty($_SESSION['username'])) {
                                         </div>
                                     </div>
                                 </div>
-                                <?php $tampil2 = mysqli_query($koneksi, "select * from tiket_gsuite order by id_tiket");
+                                <?php $tampil2 = mysqli_query($koneksi, "select * from tiket order by id_tiket");
                                 $total2 = mysqli_num_rows($tampil2);
                                 ?>
                                 <div class="col s12 m6 l3">
@@ -135,7 +135,7 @@ if (empty($_SESSION['username'])) {
                                         </li>
                                         <?php
                                         $tanggal = date("Y-m-d");
-                                        $query = "SELECT * FROM tiket_gsuite WHERE status='new' limit 5";
+                                        $query = "SELECT * FROM tiket WHERE status='new' limit 5";
                                         $tampil = mysqli_query($koneksi, $query) or die(mysqli_error());
                                         ?>
                                         <?php
@@ -183,7 +183,7 @@ if (empty($_SESSION['username'])) {
                                         </li>
                                         <?php
                                         $tanggal = date("Y-m-d");
-                                        $query1 = "SELECT * FROM tiket_gsuite WHERE status='close' limit 7";
+                                        $query1 = "SELECT * FROM tiket WHERE status='close' limit 7";
                                         $tampil1 = mysqli_query($koneksi, $query1) or die(mysqli_error());
                                         ?>
                                         <?php

@@ -49,7 +49,7 @@ if (empty($_SESSION['username'])) {
           <div class="container">
             <?php
             $kd = $_GET['id'];
-            $sql = mysqli_query($koneksi, "SELECT * FROM tiket_gsuite WHERE id_tiket='$kd'");
+            $sql = mysqli_query($koneksi, "SELECT * FROM tiket WHERE id_tiket='$kd'");
             if (mysqli_num_rows($sql) == 0) {
               header("Location: tiket.php");
             } else {
@@ -128,7 +128,7 @@ if (empty($_SESSION['username'])) {
                 echo "Email gagal dikirim : " . $sendmail->ErrorInfo;
               } else {
 
-                $update = mysqli_query($koneksi, "UPDATE tiket_gsuite SET tanggal='$tanggal', name='$name', email='$email', status='$status', email_sekolah='$email_sekolah',password='$password' WHERE id_tiket='$kd'") or die(mysqli_error());
+                $update = mysqli_query($koneksi, "UPDATE tiket SET tanggal='$tanggal', name='$name', email='$email', status='$status', email_sekolah='$email_sekolah',password='$password' WHERE id_tiket='$kd'") or die(mysqli_error());
                 if ($update) {
                   echo '<script>sweetAlert({
                                                      title: "Berhasil!", 
